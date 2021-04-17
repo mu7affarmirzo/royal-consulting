@@ -1,0 +1,581 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Royal Consulting">
+    <title>Royal Consulting</title>
+    <!-- title logo icon -->
+    <link rel="shortcut icon" href="{% static 'images/logo-icon.png' %}" type="image/x-icon">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- fonts -->
+    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %} ">
+    <!-- owl carousel styles -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <!-- my styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- owl carousel js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isInViewport.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg px-100 fixed-top" style="background: none;">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt=""></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <img src="{% static 'images/menu-icon.svg' %}" alt="">
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'infopages:about' %}">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="investor.html">Investor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="entrepreneur.html">Entrepreneur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                ENG
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">ENG</a>
+                                <a class="dropdown-item" href="#">中國人</a>
+                                <a class="dropdown-item" href="#">한국어</a>
+                                <a class="dropdown-item" href="#">日本語</a>
+                                <a class="dropdown-item" href="#">Deutsche</a>
+                                <a class="dropdown-item" href="#">عربي</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="login-btn active-btn" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+
+            <span class="line"></span>
+        </nav>
+
+        <!-- search bar -->
+        <form action="" class="search-bar">
+            <div class="overlay"></div>
+            <div class="bar">
+                <span></span>
+                <input type="text" placeholder="Search from site ...">
+                <button type="submit">Search</button>
+                <button type="button" class="close-btn">&times;</button>
+            </div>
+        </form>
+
+        <!-- main page header section -->
+        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/carousel-item1.png' %}" alt="investor-image">
+                    <div class="carousel-caption">
+                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
+                            business? To expand your market coverage, contact
+                            us.</h3>
+                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
+                            businesses. Our main focus is investment in
+                            Uzbekistan. We provide a wide range of services to run your business.
+                        </p>
+                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="overlay"></div>
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        alt="Los Angeles">
+                    <div class="carousel-caption">
+                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
+                            business? To expand your market coverage, contact
+                            us.</h3>
+                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
+                            businesses. Our main focus is investment in
+                            Uzbekistan. We provide a wide range of services to run your business.
+                        </p>
+                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="overlay"></div>
+                    <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        alt="Los Angeles">
+                    <div class="carousel-caption">
+                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
+                            business? To expand your market coverage, contact
+                            us.</h3>
+                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
+                            businesses. Our main focus is investment in
+                            Uzbekistan. We provide a wide range of services to run your business.
+                        </p>
+                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-prev" href="#carousel" data-slide="prev">
+                <img src="{% static 'images/chevron-left.svg' %}" alt="">
+            </a>
+            <a class="carousel-next" href="#carousel" data-slide="next">
+                <img src="{% static 'images/chevron-left.svg' %}" alt="">
+            </a>
+        </div>
+
+        <!-- main about section -->
+        <div class="about-section">
+            <div class="row animation">
+                <div class="col-lg-6 animation_left">
+                    <h1 class="section-title">About us</h1>
+                    <h2 class="subtitle">Audit service <br> Royal consulting</h2>
+                    <p>
+                        The audit service of Royal consulting is included in the list of the largest audit and
+                        consulting groups in Uzbekistan. Provides a wide range of audit, consulting and legal services.
+                        Among the clients are Uzbek and international companies, manufacturing, trade, construction
+                        enterprises, non-profit organizations and many others.
+                        <br> <br>
+                        The stability of the client base and staff, the results of independent audits and ratings are
+                        the best guarantee of the high quality of our work.
+                    </p>
+                </div>
+                <div class="col-lg-6 animation_right">
+                    <img src="{% static 'images/about-image.png' %}" class="w-100" alt="about-section-image">
+                </div>
+            </div>
+
+            <div class="row animation counter-block mt-100">
+                <div class="col-lg-4 animation_left">
+                    <img src="{% static 'images/countries.svg' %}" alt="">
+                    <h2 class="counter-number">6000</h2>
+                    <h5>Customers are served in over 120 countries</h5>
+                </div>
+                <div class="col-lg-4 animation_top">
+                    <img src="{% static 'images/home.svg' %}" alt="">
+                    <h2 class="counter-number">200</h2>
+                    <h5>Cities where our offices and representative offices are located</h5>
+                </div>
+                <div class="col-lg-4 animation_right">
+                    <img src="{% static 'images/people.svg' %}" alt="">
+                    <h2 class="counter-number">150</h2>
+                    <h5>Partners in our ecosystem</h5>
+                </div>
+            </div>
+
+            <div class="row animation profit-block mt-100">
+                <div class="col-lg-12">
+                    <h1 class="section-title">How we increase our <br> clients' profits</h1>
+                    <div class="row mt-5">
+                        <div class="col-lg-4 animation_left">
+                            <h5><img src="{% static 'images/analysis.png' %}" alt=""> Analyzing</h5>
+                            <p>
+                                We collect the maximum amount of initial data that increases our awareness of the
+                                project and does not allow us to make incorrect assumptions;
+                            </p>
+                        </div>
+                        <div class="col-lg-4 animation_top">
+                            <h5><img src="{% static 'images/certificate.png' %}" alt=""> We plan work</h5>
+                            <p>
+                                We draw up a work plan with deadlines and adhere to it;
+                            </p>
+                        </div>
+                        <div class="col-lg-4 animation_right">
+                            <h5><img src="{% static 'images/discussion.png' %}" alt=""> We advise</h5>
+                            <p>
+                                We actively consult with you, your employees, study the literature on the project;
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-4 animation_left">
+                            <h5><img src="{% static 'images/problem-solving.png' %}" alt=""> Best solutions</h5>
+                            <p>
+                                We develop options for solutions. We also offer solutions that you never thought of;
+                            </p>
+                        </div>
+                        <div class="col-lg-4 animation_top">
+                            <h5><img src="{% static 'images/puzzle.png' %}" alt=""> Looking for vulnerabilities</h5>
+                            <p>
+                                We introduce you to all bottlenecks and potential sources of project vulnerability;
+                            </p>
+                        </div>
+                        <div class="col-lg-4 animation_right">
+                            <h5><img src="{% static 'images/deadline.png' %}" alt=""> Don't violate the terms</h5>
+                            <p>
+                                At all stages of the project and after its completion, we observe the regime
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row industries animation mt-100">
+                <div class="col-lg-12 animation_top">
+                    <h1 class="section-title">Industries</h1>
+                    <!-- Set up your HTML -->
+                    <div class="owl-carousel">
+                        {% for industy in industies %}
+                            <div>
+                                <img src="{{industy.imageURL}}" alt="">
+                                <div class="owl-carousel-caption">
+                                    <h5>{{ industy.title }}</h5>
+                                    <p style="overflow: none">{{industy.body|safe|truncatechars:180}}</p>
+                                    <a href="" class="more-btn">More</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+{#                        <div>#}
+{#                            <img src="data/images/item1.png" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Tourism</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item2.png" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>ICT</h5>#}
+{#                                <p>Today, the field of information and communication technologies (ICT) is one of the#}
+{#                                    fastest growing ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item3.png" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Electrotechnical sphere</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item4.png" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Textile industry</h5>#}
+{#                                <p>At the end of 2018, the electrical industry accounted for 1.2% ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item5.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Food industry</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item6.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Pharmaceutical industry</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item7.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Fuel and energy complex</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item8.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Chemical industry</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item9.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Engineering industry</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item10.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Construction industry</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <img src="data/images/item11.jpg" alt="">#}
+{#                            <div class="owl-carousel-caption">#}
+{#                                <h5>Agriculture and water management</h5>#}
+{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
+{#                                    ancient ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row animation mt-100 central-asia-block">
+                <div class="col-lg-12">
+                    <div class="row mt-50">
+                        <div class="col-lg-5 flex-column d-flex justify-content-between mb-3 animation_left">
+                            <h1 class="section-title">Why is it profitable to invest <br> in Central Asia.</h1>
+                            <p>Central Asia, a region east of the Caspian Sea that includes Uzbekistan, Kazakhstan,
+                                Tajikistan, Kyrgyzstan and Turkmenistan, has significant potential to become an
+                                attractive investment destination. Compared to other emerging economies, Central Asia is
+                                receiving less attention from potential investors so far. Its potential in attracting
+                                foreign direct investment (FDI) is estimated at up to $ 170 billion, including $ 40-70
+                                billion in non-resource sectors, over the next 10 years.</p>
+                            <a href="" class="active-btn">More</a>
+                        </div>
+                        <div class="col-lg-7 animation_right">
+                            <img src="{% static 'images/central-asia.png' %}" class="w-100" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row animation mt-100 investor-block">
+                <div class="col-lg-12">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-lg-6 animation_left">
+                            <img src="{% static 'images/investor.png' %}" class="w-100" alt="">
+                        </div>
+                        <div class="col-lg-6 pl-lg-5 animation_right">
+                            <div class="block-caption">
+                                <h5>Are you an investor?</h5>
+                                <p class="my-4">If you are an investor looking for profitable options for investing in
+                                    promising young companies, we will help you</p>
+                                <a href="" class="active-btn">More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-lg-6 order-1 order-lg-2 animation_left">
+                            <img src="{% static 'images/enterpreneur.png' %}" class="w-100" alt="">
+                        </div>
+                        <div class="col-lg-6 pl-lg-5 order-2 order-lg-1 animation_right">
+                            <div class="block-caption">
+                                <h5>Are you an entrepreneur?</h5>
+                                <p class="my-4 w-75">Offer your investment project to hundreds of potential investors.
+                                    To do this, you must leave an application for the search for investments.</p>
+                                <a href="" class="active-btn">More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row animation mt-100 central-asia-block">
+                <div class="col-lg-12">
+                    <h1 class="section-title">Resources Central Asia</h1>
+                    <div class="row mt-50">
+                        <div class="col-lg-7 animation_left">
+                            <img src="{% static 'images/resources.png' %}" class="w-100" alt="">
+                        </div>
+                        <div class="col-lg-5 flex-column d-flex justify-content-between animation_right">
+                            <p>Uzbekistan in international rankings. we will indicate several ratings by agency.
+                                Fitch Ratings BB- stable
+                                S&P - BB- stable
+                                Our resources. Uzbekistan ranks 14th in the world in natural gas production, third in
+                                the world in export and sixth in cotton production, seventh in the world in uranium
+                                reserves (4% of world uranium reserves), in total gold reserves in Uzbekistan. place in
+                                the world, and in terms of gold production - in seventh.</p>
+                            <a href="" class="active-btn">More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row animation mt-100 blog-section">
+                <div class="col-lg-12 animation_top">
+                    <h1 class="section-title">Our blog</h1>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="blog-section-item">
+                                <img src="{% static 'images/blog1.png' %}" alt="">
+                                <div class="blog-section-caption">
+                                    <h6>Our victory was accompanied by the voice of the coming generation</h6>
+                                    <p>By the way, thorough competitor research is gaining popularity ...</p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="blog-section-item">
+                                <img src="{% static 'images/blog2.png' %}" alt="">
+                                <div class="blog-section-caption">
+                                    <h6>Speakers of the State Duma chamber are indignant</h6>
+                                    <p>It should be noted that the modern development methodology speaks about the
+                                        capabilities of the system ...</p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="blog-section-item">
+                                <img src="{% static 'images/blog3.png' %}" alt="">
+                                <div class="blog-section-caption">
+                                    <h6>Noble aspirations will not save: the sky darkens</h6>
+                                    <p>As part of the big picture, emerging economies ...</p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="blog-section-item">
+                                <img src="{% static 'images/blog4.png' %}" alt="">
+                                <div class="blog-section-caption">
+                                    <h6>A trifle, but nice: the young growth grows older</h6>
+                                    <p>A course towards a socially oriented national project ...</p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer px-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="{% static 'images/logo-white.png' %}" class="logo" alt="">
+                        <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="{% static 'images/instagram.png' %}" alt=""></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="{% static 'images/twitter.png' %}" alt=""></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><img src="{% static 'images/telegram.png' %}" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2">
+                        <h6>Useful links</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Investor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Entrepreneur</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacts</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h6>Contacts</h6>
+                        <p class="mb-1">Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002</p>
+                        <p><a href="" class="nav-link">E-mail: info@royalco.com</a></p>
+                        <p><a href="" class="nav-link">Phone: +99 899 999-99-99</a></p>
+                        <p><a href="" class="nav-link">Working days: Mon. - Sat: 9:00 to 18:00</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6>Get in touch</h6>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input type="text" placeholder="Name">
+                                    <input type="text" placeholder="Phone number">
+                                    <input type="text" placeholder="Message">
+                                </div>
+                            </div>
+                            <button class="active-btn" type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
