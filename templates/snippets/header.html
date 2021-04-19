@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <nav class="navbar navbar-expand-lg px-100">
         <!-- Brand -->
     <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt=""></a>
@@ -12,22 +13,22 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'infopages:about' %}">About us</a>
+                <a class="nav-link" href="{% url 'infopages:about' %}">{% trans 'About us' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="investor.html">Investor</a>
+                <a class="nav-link" href="investor.html">{% trans 'Investor' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="entrepreneur.html">Entrepreneur</a>
+                <a class="nav-link" href="entrepreneur.html">{% trans 'Entrepreneur' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="news.html">News</a>
+                <a class="nav-link" href="news.html">{% trans 'News' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="faq.html">FAQ</a>
+                <a class="nav-link" href="faq.html">{% trans 'FAQ' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contacts.html">Contacts</a>
+                <a class="nav-link" href="contacts.html">{% trans 'Contacts' %}</a>
             </li>
             <li class="nav-item">
                 <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
@@ -48,7 +49,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="login-btn active-btn" href="login.html">Login</a>
+                <a class="login-btn active-btn" href="login.html">{% trans 'Login' %}</a>
             </li>
         </ul>
     </div>
@@ -60,7 +61,7 @@
     <div class="bar">
         <span></span>
         <input type="text" placeholder="Search from site ...">
-        <button type="submit">Search</button>
+        <button type="submit">{% trans 'Search' %}</button>
         <button type="button" class="close-btn">&times;</button>
     </div>
 </form>

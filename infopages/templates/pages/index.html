@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,22 +54,22 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'infopages:about' %}">About us</a>
+                        <a class="nav-link" href="{% url 'infopages:about' %}">{% trans 'About us' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="investor.html">Investor</a>
+                        <a class="nav-link" href="investor.html">{% trans 'Investor' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="entrepreneur.html">Entrepreneur</a>
+                        <a class="nav-link" href="entrepreneur.html">{% trans 'Entrepreneur' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="news.html">{% trans 'News' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
+                        <a class="nav-link" href="faq.html">{% trans 'FAQ' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacts.html">Contacts</a>
+                        <a class="nav-link" href="contacts.html">{% trans 'Contacts' %}</a>
                     </li>
                     <li class="nav-item">
                         <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
@@ -86,10 +87,25 @@
                                 <a class="dropdown-item" href="#">Deutsche</a>
                                 <a class="dropdown-item" href="#">عربي</a>
                             </div>
+                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input type="hidden" name="next" value="{{ redirect_to }}">
+                                <select name="language" >
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                                            selected{% endif %}>
+                                        {{ language.name_local }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <input type="submit" value="Go">
+                            </form>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="login-btn active-btn" href="login.html">Login</a>
+                        <a class="login-btn active-btn" href="login.html">{% trans 'Login' %}</a>
                     </li>
                 </ul>
             </div>
@@ -103,7 +119,7 @@
             <div class="bar">
                 <span></span>
                 <input type="text" placeholder="Search from site ...">
-                <button type="submit">Search</button>
+                <button type="submit">{% trans 'Search' %}</button>
                 <button type="button" class="close-btn">&times;</button>
             </div>
         </form>
@@ -453,56 +469,72 @@
             <div class="row animation mt-100 blog-section">
                 <div class="col-lg-12 animation_top">
                     <h1 class="section-title">Our blog</h1>
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="blog-section-item">
-                                <img src="{% static 'images/blog1.png' %}" alt="">
-                                <div class="blog-section-caption">
-                                    <h6>Our victory was accompanied by the voice of the coming generation</h6>
-                                    <p>By the way, thorough competitor research is gaining popularity ...</p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
+                    <div class="row mt-3">
+
+                        {% for news in homenews %}
+                            <div class="col-lg-3 col-md-6">
+                                <div class="blog-section-item">
+                                    <img src="{{news.imageURL}}" alt="">
+                                    <div class="blog-section-caption">
+                                        <h6>{{news.title}}</h6>
+                                        <p>{{news.body|safe|truncatechars:180}}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="{% url 'infopages:news-detail' news.slug %}" class="more-btn">More</a> <span>14.03.2021</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="blog-section-item">
-                                <img src="{% static 'images/blog2.png' %}" alt="">
-                                <div class="blog-section-caption">
-                                    <h6>Speakers of the State Duma chamber are indignant</h6>
-                                    <p>It should be noted that the modern development methodology speaks about the
-                                        capabilities of the system ...</p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="blog-section-item">
-                                <img src="{% static 'images/blog3.png' %}" alt="">
-                                <div class="blog-section-caption">
-                                    <h6>Noble aspirations will not save: the sky darkens</h6>
-                                    <p>As part of the big picture, emerging economies ...</p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="blog-section-item">
-                                <img src="{% static 'images/blog4.png' %}" alt="">
-                                <div class="blog-section-caption">
-                                    <h6>A trifle, but nice: the young growth grows older</h6>
-                                    <p>A course towards a socially oriented national project ...</p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+{#                        <div class="col-lg-3 col-md-6">#}
+{#                            <div class="blog-section-item">#}
+{#                                <img src="{% static 'images/blog1.png' %}" alt="">#}
+{#                                <div class="blog-section-caption">#}
+{#                                    <h6>Our victory was accompanied by the voice of the coming generation</h6>#}
+{#                                    <p>By the way, thorough competitor research is gaining popularity ...</p>#}
+{#                                    <div class="d-flex justify-content-between">#}
+{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-lg-3 col-md-6">#}
+{#                            <div class="blog-section-item">#}
+{#                                <img src="{% static 'images/blog2.png' %}" alt="">#}
+{#                                <div class="blog-section-caption">#}
+{#                                    <h6>Speakers of the State Duma chamber are indignant</h6>#}
+{#                                    <p>It should be noted that the modern development methodology speaks about the#}
+{#                                        capabilities of the system ...</p>#}
+{#                                    <div class="d-flex justify-content-between">#}
+{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-lg-3 col-md-6">#}
+{#                            <div class="blog-section-item">#}
+{#                                <img src="{% static 'images/blog3.png' %}" alt="">#}
+{#                                <div class="blog-section-caption">#}
+{#                                    <h6>Noble aspirations will not save: the sky darkens</h6>#}
+{#                                    <p>As part of the big picture, emerging economies ...</p>#}
+{#                                    <div class="d-flex justify-content-between">#}
+{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="col-lg-3 col-md-6">#}
+{#                            <div class="blog-section-item">#}
+{#                                <img src="{% static 'images/blog4.png' %}" alt="">#}
+{#                                <div class="blog-section-caption">#}
+{#                                    <h6>A trifle, but nice: the young growth grows older</h6>#}
+{#                                    <p>A course towards a socially oriented national project ...</p>#}
+{#                                    <div class="d-flex justify-content-between">#}
+{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+            
                     </div>
                 </div>
             </div>
@@ -530,37 +562,37 @@
                         </ul>
                     </div>
                     <div class="col-lg-2">
-                        <h6>Useful links</h6>
+                        <h6>{% trans 'Useful links' %}</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Investor</a>
+                                <a class="nav-link" href="#">{% trans 'Investor' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Entrepreneur</a>
+                                <a class="nav-link" href="#">{% trans 'Entrepreneur' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About us</a>
+                                <a class="nav-link" href="#">{% trans 'About us' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">News</a>
+                                <a class="nav-link" href="#">{% trans 'News' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">FAQ</a>
+                                <a class="nav-link" href="#">{% trans 'FAQ' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contacts</a>
+                                <a class="nav-link" href="#">{% trans 'Contacts' %}</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3">
-                        <h6>Contacts</h6>
-                        <p class="mb-1">Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002</p>
-                        <p><a href="" class="nav-link">E-mail: info@royalco.com</a></p>
-                        <p><a href="" class="nav-link">Phone: +99 899 999-99-99</a></p>
-                        <p><a href="" class="nav-link">Working days: Mon. - Sat: 9:00 to 18:00</a></p>
+                        <h6>{% trans 'Contacts' %}</h6>
+                        <p class="mb-1">{% trans 'Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002' %}</p>
+                        <p><a href="" class="nav-link">{% trans 'E-mail: info@royalco.com' %}</a></p>
+                        <p><a href="" class="nav-link">{% trans 'Phone: +99 899 999-99-99' %}</a></p>
+                        <p><a href="" class="nav-link">{% trans 'Working days: Mon. - Sat: 9:00 to 18:00' %}</a></p>
                     </div>
                     <div class="col-lg-4">
-                        <h6>Get in touch</h6>
+                        <h6>{% trans 'Get in touch' %}</h6>
                         <form action="">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -569,7 +601,7 @@
                                     <input type="text" placeholder="Message">
                                 </div>
                             </div>
-                            <button class="active-btn" type="submit">Send</button>
+                            <button class="active-btn" type="submit">{% trans 'Send' %}</button>
                         </form>
                     </div>
                 </div>

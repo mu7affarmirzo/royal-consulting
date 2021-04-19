@@ -16,10 +16,11 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
-# urlpatterns += i18n_patterns(
-#
-#     # path('infopages/', include('infopages.urls')),
-# )
+urlpatterns += i18n_patterns(
+
+    path('infopages/', include('infopages.urls')),
+    # path('', include('infopages.urls')),
+)
 
 
 if settings.DEBUG:

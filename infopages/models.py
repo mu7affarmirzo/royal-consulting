@@ -20,7 +20,8 @@ def upload_location(instance, filename):
 class NewsModel(models.Model):
     title = models.CharField(max_length=500, null=True, blank=True)
     body = RichTextField(null=True, blank=True)
-    image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    little_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    main_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
     date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
     slug = models.SlugField(blank=True, unique=True)
 
@@ -30,7 +31,15 @@ class NewsModel(models.Model):
     @property
     def imageURL(self):
         try:
-            url = self.image.url
+            url = self.little_image.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def mainimageURL(self):
+        try:
+            url = self.main_image.url
         except:
             url = ''
         return url

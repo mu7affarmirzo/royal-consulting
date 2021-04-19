@@ -36,8 +36,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -117,27 +117,20 @@ EXTRA_LANG_INFO = {
         'name': 'Uzbek',
         'name_local': 'Uzbek',
     },
-    'hi': {
-        'bidi': False,
-        'code': 'hi',
-        'name': 'Hindi',
-        'name_local': 'Hindi',
-    },
 }
 gettext = lambda s: s
 
 LANGUAGE_CODE = 'en'
 
-
+gettext = lambda s: s
 LANGUAGES = (
     ('uz', gettext('Uzbek')),
     ('en', gettext('English')),
     ('zh-cn', gettext('简体中文')),
     ('ja', gettext('日本語')),
     ('ko', gettext('한국어')),
-    ('de_DE', gettext('Deutsche')),
-    ('hi', gettext('हिन्दी')),
-    ('ar-ae', gettext('عربي')),
+    ('de', gettext('Deutsche')),
+    ('ar', gettext('عربي')),
 
     # ('ru', gettext('Russian')),
 )
@@ -148,7 +141,7 @@ MODELTRANSLATION_LANGUAGES = ('uz', 'ru', 'en')
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('ru', 'en')
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'templates/locale')
+    os.path.join(BASE_DIR, 'locale')
 ]
 
 
@@ -156,7 +149,7 @@ LOCALE_PATHS = [
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
-CKEDITOR_JQUERY_URL =    '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 CKEDITOR_CONFIGS = {
     'default': {

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+    <section class="px-100">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Blog</li>
+            </ul>
+        </div>
+
+        <div class="row animation mt-4">
+            <div class="col-lg-12 animation_top">
+                <h1 class="section-title mb-lg-5 mb-3">Blog</h1>
+
+                <div class="row mt-3">
+                    {% for new in news %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item">
+                                <img src="{{new.imageURL}}" alt="">
+                                <div class="blog-caption">
+                                    <h6>{{new.title}}</h6>
+                                    <p>{{new.body|safe|truncatechars:180}}</p>
+                                    <a href="{% url 'infopages:news-detail' new.slug %}" class="more-btn">More</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog1.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>Our victory was accompanied by the voice of the coming generation</h6>#}
+{#                                <p>By the way, thorough competitor research is gaining popularity ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog2.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>Speakers of the State Duma chamber are indignant</h6>#}
+{#                                <p>It should be noted that the modern development methodology speaks about the#}
+{#                                    capabilities of the system ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog3.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>Noble aspirations will not save: the sky darkens</h6>#}
+{#                                <p>As part of the big picture, emerging economies ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog4.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>A trifle, but nice: the young growth grows older</h6>#}
+{#                                <p>A course towards a socially oriented national project ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog3.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>Noble aspirations will not save: the sky darkens</h6>#}
+{#                                <p>As part of the big picture, emerging economies ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-4 col-md-6">#}
+{#                        <div class="blog-item">#}
+{#                            <img src="data/images/blog4.png" alt="">#}
+{#                            <div class="blog-caption">#}
+{#                                <h6>A trifle, but nice: the young growth grows older</h6>#}
+{#                                <p>A course towards a socially oriented national project ...</p>#}
+{#                                <a href="" class="more-btn">More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <ul class="pagination-lg pagination justify-content-end">
+                            {% if news.has_previous %}
+                                <li class="page-item">
+                                  <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ news.previous_page_number }}">&laquo;</a>
+                                </li>
+                            {% endif %}
+
+
+                            {% for i in news.paginator.page_range %}
+                                {% if news.number == i %}
+                                    <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                                {% else %}
+                                    <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if blog_posts.has_next %}
+                                <li class="page-item">
+                                  <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ news.next_page_number }}">Next</a>
+                                </li>
+                                <li class="page-item">
+                                  <a class="page-link"  href="?{% if query %}q={{query}}&{% endif %}page={{ news.paginator.num_pages }}">Last &raquo;</a>
+                                </li>
+                            {% endif %}
+{#                    <div class="col-lg-12">#}
+{#                        <ul class="pagination-lg pagination justify-content-end">#}
+{#                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>#}
+{#                            <li class="page-item active"><a class="page-link" href="#">1</a></li>#}
+{#                            <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#                            <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>#}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
