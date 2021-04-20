@@ -19,10 +19,10 @@
                 <a class="nav-link" href="investor.html">{% trans 'Investor' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="entrepreneur.html">{% trans 'Entrepreneur' %}</a>
+                <a class="nav-link" href="{% url 'entrepreneur:entrepreneur' %}">{% trans 'Entrepreneur' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="news.html">{% trans 'News' %}</a>
+                <a class="nav-link" href="{% url 'infopages:news-list' %}">{% trans 'News' %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq.html">{% trans 'FAQ' %}</a>
@@ -33,20 +33,37 @@
             <li class="nav-item">
                 <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
             </li>
+{#            <li class="nav-item">#}
+{#                <div class="dropdown">#}
+{#                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">#}
+{#                        ENG#}
+{#                    </button>#}
+{#                    <div class="dropdown-menu">#}
+{#                        <a class="dropdown-item" href="#">ENG</a>#}
+{#                        <a class="dropdown-item" href="#">中國人</a>#}
+{#                        <a class="dropdown-item" href="#">한국어</a>#}
+{#                        <a class="dropdown-item" href="#">日本語</a>#}
+{#                        <a class="dropdown-item" href="#">Deutsche</a>#}
+{#                        <a class="dropdown-item" href="#">عربي</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </li>#}
             <li class="nav-item">
-                <div class="dropdown">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                        ENG
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">ENG</a>
-                        <a class="dropdown-item" href="#">中國人</a>
-                        <a class="dropdown-item" href="#">한국어</a>
-                        <a class="dropdown-item" href="#">日本語</a>
-                        <a class="dropdown-item" href="#">Deutsche</a>
-                        <a class="dropdown-item" href="#">عربي</a>
-                    </div>
-                </div>
+            <form  class="dropdown" id="languageForm" action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ redirect_to }}">
+                <select id="languageSelect" name="language" class="form-select" aria-label="Language select">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option class="dropdown-item" value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
+                            selected{% endif %}>
+                        {{ language.name_local }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
             </li>
             <li class="nav-item">
                 <a class="login-btn active-btn" href="login.html">{% trans 'Login' %}</a>

@@ -11,14 +11,16 @@ urlpatterns = [
     path('', home_screen_view, name='home'),
     path('about/', AboutView.as_view(), name='about'),
 
-    path('info/', include('infopages.urls', 'infopages')),
+    path('info/', include('infopages.urls', 'staticpages')),
+    path('entrepreneur/', include('entrepreneur.urls', 'entrepreneur')),
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(
 
-    path('infopages/', include('infopages.urls')),
+    path('info/', include('infopages.urls')),
+    path('entrepreneur/', include('entrepreneur.urls')),
     # path('', include('infopages.urls')),
 )
 

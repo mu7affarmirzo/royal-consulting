@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'infopages.apps.InfopagesConfig',
-    # 'ckeditor',
+    'entrepreneur.apps.EntrepreneurConfig',
+
+    'djmoney',
 ]
 
 MIDDLEWARE = [
