@@ -38,13 +38,14 @@
                 <div class="owl-carousel">
 
 
-                    {% for industy in industies %}
+                    {% for industry in industries %}
                         <div>
-                            <img src="{{industy.imageURL}}" alt="">
+                            <img src="{{industry.imageURL}}" alt="">
                             <div class="owl-carousel-caption">
-                                <h5>{{ industy.title }}</h5>
-                                <p>{{industy.body|safe|truncatechars:180}}</p>
-                                <a href="{% url 'entrepreneur:detailed-industies' industy.slug %}" class="more-btn">More</a>
+                                <h5>{{ industry.title }}</h5>
+                                <p>{{industry.body|safe|truncatechars:180}}</p>
+{#                                <a href="{% url 'entrepreneurs:indust' industries.slug %}" class="more-btn">More</a>#}
+                                <a href="{% url 'entrepreneurs:indust' industry.slug %}" class="more-btn">More</a>
                             </div>
                         </div>
                     {% endfor %}
@@ -82,7 +83,7 @@
                 <div class="row mt-3">
                     {% for business in businesses %}
                         <div class="col-lg-3 col-md-6">
-                            <a class="investment-item" href="">
+                            <a class="investment-item" href="{% url 'entrepreneurs:detailed-business' business.slug %}">
                                 <img src="{{business.imageURL}}" alt="">
                                 <div class="blog-section-caption">
                                     <h6>{{ business.title}}</h6>

@@ -5,7 +5,6 @@ app_name = 'entrepreneur'
 
 urlpatterns = [
     path('', entrepreneur_view, name='entrepreneur-index'),
-    path('<slug>/', detail_industies_view, name='detailed-industies'),
-    # path('news/', news_list_view, name='news-list'),
-    # path('news/<slug>/', detail_news_view, name="news-detail"),
+    path('industries/<slug>/', detail_indust_view, name='indust'),
+    path('business/<slug>/', detail_business_view, name='detailed-business'),
 ]
