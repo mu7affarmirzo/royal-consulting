@@ -12,11 +12,23 @@ from django.utils.translation import ugettext_lazy as _
 
 NEWS_PER_PAGE = 6
 
+class FaqView(TemplateView):
+    template_name = 'pages/faq.html'
+
 class HomeScreenView(TemplateView):
     template_name = 'pages/index.html'
 
 class AboutView(TemplateView):
     template_name = 'pages/about.html'
+
+class CentralAsiaView(TemplateView):
+    template_name = 'pages/central-asia.html'
+
+class RerourcesView(TemplateView):
+    template_name = 'pages/recourses.html'
+
+class ContactsView(TemplateView):
+    template_name = 'pages/contacts.html'
 
 
 def home_screen_view(request, *args, **kwargs):
@@ -25,10 +37,8 @@ def home_screen_view(request, *args, **kwargs):
     homenews = list(NewsModel.objects.all())[:4]
     context = {
         'industies': industries,
-        # 'menu': menu,
         'homenews': homenews
     }
-    # context = {}
 
     return render(request, "pages/index.html", context)
 
@@ -40,7 +50,6 @@ def detail_news_view(request, slug):
     context['posts'] = posts
 
     return render(request, 'pages/news_detail.html', context)
-
 
 
 def news_list_view(request, *args, **kwargs):
@@ -66,6 +75,16 @@ def news_list_view(request, *args, **kwargs):
     context['news'] = news
 
     return render(request, "pages/news_list.html", context)
+
+
+def individual_view(request, slug):
+
+    context = {}
+
+    posts = get_object_or_404(InfoPageModel, slug=slug)
+    context['posts'] = posts
+
+    return render(request, 'pages/individual.html', context)
 
 
 

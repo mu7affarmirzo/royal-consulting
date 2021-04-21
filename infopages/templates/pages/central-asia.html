@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="px-100 about">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Info</a></li>
+                <li class="breadcrumb-item active">Why is it profitable to invest in Central Asia.</li>
+            </ul>
+        </div>
+        <div class="row animation">
+            <div class="col-lg-12 animation_top">
+                <h1 class="section-title">Why is it profitable to invest in Central Asia.</h1>
+                <img src="{% static 'images/central-asia.png' %}" class="w-100 mt-50" alt="">
+            </div>
+        </div>
+        <div class="row align-items-center animation">
+            <div class="col-lg-10 offset-lg-1 animation_left">
+                <p class="mt-50">
+                    Central Asia, a region east of the Caspian Sea that includes Uzbekistan, Kazakhstan,
+                                Tajikistan, Kyrgyzstan and Turkmenistan, has significant potential to become an
+                                attractive investment destination. Compared to other emerging economies, Central Asia is
+                                receiving less attention from potential investors so far. Its potential in attracting
+                                foreign direct investment (FDI) is estimated at up to $ 170 billion, including $ 40-70
+                                billion in non-resource sectors, over the next 10 years.
+                </p>
+            </div>
+        </div>
+
+
+    </section>
+{% endblock %}

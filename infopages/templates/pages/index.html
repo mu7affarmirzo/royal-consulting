@@ -60,16 +60,16 @@
                         <a class="nav-link" href="investor.html">{% trans 'Investor' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'entrepreneur:entrepreneur' %}">{% trans 'Entrepreneur' %}</a>
+                        <a class="nav-link" href="{% url 'entrepreneur:entrepreneur-index' %}">{% trans 'Entrepreneur' %}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'infopages:news-list' %}">{% trans 'News' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.html">{% trans 'FAQ' %}</a>
+                        <a class="nav-link" href="{% url 'staticpages:faq' %}">{% trans 'FAQ' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contacts.html">{% trans 'Contacts' %}</a>
+                        <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
                     </li>
                     <li class="nav-item">
                         <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
@@ -282,6 +282,8 @@
                     <h1 class="section-title">Industries</h1>
                     <!-- Set up your HTML -->
                     <div class="owl-carousel">
+
+
                         {% for industy in industies %}
                             <div>
                                 <img src="{{industy.imageURL}}" alt="">
@@ -292,104 +294,8 @@
                                 </div>
                             </div>
                         {% endfor %}
-{#                        <div>#}
-{#                            <img src="data/images/item1.png" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Tourism</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item2.png" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>ICT</h5>#}
-{#                                <p>Today, the field of information and communication technologies (ICT) is one of the#}
-{#                                    fastest growing ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item3.png" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Electrotechnical sphere</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item4.png" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Textile industry</h5>#}
-{#                                <p>At the end of 2018, the electrical industry accounted for 1.2% ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item5.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Food industry</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item6.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Pharmaceutical industry</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item7.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Fuel and energy complex</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item8.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Chemical industry</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item9.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Engineering industry</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item10.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Construction industry</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div>#}
-{#                            <img src="data/images/item11.jpg" alt="">#}
-{#                            <div class="owl-carousel-caption">#}
-{#                                <h5>Agriculture and water management</h5>#}
-{#                                <p>There are 9608 cultural objects in the republic. So of them more than 7300 objects of#}
-{#                                    ancient ...</p>#}
-{#                                <a href="" class="more-btn">More</a>#}
-{#                            </div>#}
-{#                        </div>#}
+
+
                     </div>
                 </div>
             </div>
@@ -405,7 +311,7 @@
                                 receiving less attention from potential investors so far. Its potential in attracting
                                 foreign direct investment (FDI) is estimated at up to $ 170 billion, including $ 40-70
                                 billion in non-resource sectors, over the next 10 years.</p>
-                            <a href="" class="active-btn">More</a>
+                            <a href="{% url 'staticpages:central-asia' %}" class="active-btn">More</a>
                         </div>
                         <div class="col-lg-7 animation_right">
                             <img src="{% static 'images/central-asia.png' %}" class="w-100" alt="">
@@ -425,7 +331,7 @@
                                 <h5>Are you an investor?</h5>
                                 <p class="my-4">If you are an investor looking for profitable options for investing in
                                     promising young companies, we will help you</p>
-                                <a href="" class="active-btn">More</a>
+                                <a href="{% url 'home' %}" class="active-btn">More</a>
                             </div>
                         </div>
                     </div>
@@ -438,7 +344,7 @@
                                 <h5>Are you an entrepreneur?</h5>
                                 <p class="my-4 w-75">Offer your investment project to hundreds of potential investors.
                                     To do this, you must leave an application for the search for investments.</p>
-                                <a href="" class="active-btn">More</a>
+                                <a href="{% url 'entrepreneurs:entrepreneur-index' %}" class="active-btn">More</a>
                             </div>
                         </div>
                     </div>
@@ -460,7 +366,7 @@
                                 the world in export and sixth in cotton production, seventh in the world in uranium
                                 reserves (4% of world uranium reserves), in total gold reserves in Uzbekistan. place in
                                 the world, and in terms of gold production - in seventh.</p>
-                            <a href="" class="active-btn">More</a>
+                            <a href="{% url 'staticpages:resources-asia' %}" class="active-btn">More</a>
                         </div>
                     </div>
                 </div>
@@ -580,7 +486,7 @@
                                 <a class="nav-link" href="#">{% trans 'FAQ' %}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'Contacts' %}</a>
+                                <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
                             </li>
                         </ul>
                     </div>

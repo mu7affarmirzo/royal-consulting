@@ -16,19 +16,19 @@
                 <a class="nav-link" href="{% url 'infopages:about' %}">{% trans 'About us' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="investor.html">{% trans 'Investor' %}</a>
+                <a class="nav-link" href="{% url 'investors:investor-index' %}">{% trans 'Investor' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'entrepreneur:entrepreneur' %}">{% trans 'Entrepreneur' %}</a>
+                <a class="nav-link" href="{% url 'entrepreneurs:entrepreneur-index' %}">{% trans 'Entrepreneur' %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'infopages:news-list' %}">{% trans 'News' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="faq.html">{% trans 'FAQ' %}</a>
+                <a class="nav-link" href="{% url 'staticpages:faq' %}">{% trans 'FAQ' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="contacts.html">{% trans 'Contacts' %}</a>
+                <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
             </li>
             <li class="nav-item">
                 <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>

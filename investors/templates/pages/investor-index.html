@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+    <section class="px-100">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active">Investor</li>
+            </ul>
+        </div>
+        <div class="row align-items-center animation">
+            <div class="col-lg-7 animation_left">
+                <video preload autobuffer style="width: 100%;" role="presentation" title="Advertisement"
+                    webkit-playsinline="true" playsinline="true" muted="muted">
+                    <source src="{% static 'images/medium7.mp4' %}" type="video/mp4" />
+                </video>
+            </div>
+            <div class="col-lg-5 animation_right">
+                <h3 class="section-title mb-lg-3">
+                    You are an investor looking for profitable options for investing in promising young companies, we
+                    will help you:
+                </h3>
+                <p>
+                    1. Choose the best investment proposal according to your search criteria for projects. To do this,
+                    you need to leave a request to search for projects.
+                    <br><br>
+                    2. To form a personal investment portfolio, which will make it possible to develop several young
+                    companies at the same time and thereby help diversify risks.
+                </p>
+                <a href="investor-application.html" class="active-btn">Service request</a>
+            </div>
+        </div>
+
+
+        <div class="row industries animation mt-100">
+            <div class="col-lg-12 animation_top">
+                <h1 class="section-title">Industries</h1>
+                <!-- Set up your HTML -->
+                <div class="owl-carousel">
+
+
+                    {% for industy in industies %}
+                        <div>
+                            <img src="{{industy.imageURL}}" alt="">
+                            <div class="owl-carousel-caption">
+                                <h5>{{ industy.title }}</h5>
+                                <p>{{industy.body|safe|truncatechars:180}}</p>
+                                <a href="{% url 'entrepreneur:detailed-industies' industy.slug %}" class="more-btn">More</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row animation mt-100">
+            <div class="col-lg-12 animation_top">
+                <h1 class="section-title mb-lg-5 mb-3">Catalog</h1>
+                <div class="select-group">
+{#                    {% for filter in filters %}#}
+{#                        {% for fil in filter %}#}
+{#                            <select name="" id="">#}
+{#                                <option value="">{{ fil.name }}</option>#}
+{#                            </select>#}
+{#                        {% endfor %}#}
+{#                    {% endfor %}#}
+                    <select name="" id="">
+                        <option value="">Business sale</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Idea and developments</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Industries</option>
+                    </select>
+                    <select name="" id="">
+                        <option value="">Investment size</option>
+                    </select>
+                </div>
+
+                <div class="row mt-3">
+                    {% for business in businesses %}
+                        <div class="col-lg-3 col-md-6">
+                            <a class="investment-item" href="">
+                                <img src="{{business.imageURL}}" alt="">
+                                <div class="blog-section-caption">
+                                    <h6>{{ business.title}}</h6>
+                                    <p>{{ business.body|safe|truncatechars:180}}</p>
+                                    <h5>{{business.price}}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+{#                    <div class="col-lg-3 col-md-6">#}
+{#                        <a class="investment-item" href="">#}
+{#                            <img src="{% static 'images/blog1.png' %}" alt="">#}
+{#                            <div class="blog-section-caption">#}
+{#                                <h6>Our victory was accompanied by the voice of the coming generation</h6>#}
+{#                                <p>By the way, thorough competitor research is gaining popularity ...</p>#}
+{#                                <h5>$ 1 000 200</h5>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="col-lg-3 col-md-6">#}
+{#                        <a class="investment-item" href="">#}
+{#                            <img src="{% static 'images/blog2.png' %}" alt="">#}
+{#                            <div class="blog-section-caption">#}
+{#                                <h6>Speakers of the State Duma chamber are indignant</h6>#}
+{#                                <p>It should be noted that the modern development methodology speaks about the#}
+{#                                    capabilities of the system ...</p>#}
+{#                                <h5>$ 1 000 200</h5>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="col-lg-3 col-md-6">#}
+{#                        <a class="investment-item" href="">#}
+{#                            <img src="{% static 'images/blog3.png' %}" alt="">#}
+{#                            <div class="blog-section-caption">#}
+{#                                <h6>Noble aspirations will not save: the sky darkens</h6>#}
+{#                                <p>As part of the big picture, emerging economies ...</p>#}
+{#                                <h5>$ 1 000 200</h5>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="col-lg-3 col-md-6">#}
+{#                        <a class="investment-item" href="">#}
+{#                            <img src="{% static 'images/blog4.png' %}" alt="">#}
+{#                            <div class="blog-section-caption">#}
+{#                                <h6>A trifle, but nice: the young growth grows older</h6>#}
+{#                                <p>A course towards a socially oriented national project ...</p>#}
+{#                                <h5>$ 1 000 200</h5>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+                </div>
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <ul class="pagination-lg pagination justify-content-end">
+                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

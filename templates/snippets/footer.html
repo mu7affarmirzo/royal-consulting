@@ -23,22 +23,22 @@
                 <h6>Useful links</h6>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Investor</a>
+                        <a class="nav-link" href="{% url 'investors:investor-index' %}">Investor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Entrepreneur</a>
+                        <a class="nav-link" href="{% url 'entrepreneurs:entrepreneur-index' %}">Entrepreneur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About us</a>
+                        <a class="nav-link" href="{% url 'staticpages:about' %}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">News</a>
+                        <a class="nav-link" href="{% url 'staticpages:news-list' %}">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="{% url 'staticpages:faq' %}">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacts</a>
+                        <a class="nav-link" href="{% url 'staticpages:contacts' %}">Contacts</a>
                     </li>
                 </ul>
             </div>

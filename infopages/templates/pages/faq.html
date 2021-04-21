@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <section class="px-100">
+        <div class="row">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">FAQ</li>
+            </ul>
+        </div>
+
+        <div class="row animation mt-4">
+            <div class="col-lg-6 animation_top">
+                <h1 class="section-title mb-lg-5 mb-3">Answers to the most frequently asked questions</h1>
+            </div>
+        </div>
+        <div class="row faq animation">
+            <div class="col-lg-8 offset-lg-4 animation_right">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+                                How is the budget calculated?
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                The estimate for each wedding is made individually, so there is a single answer to the
+                                question "How much does a wedding cost?" definitely not. Below we suggest that you
+                                familiarize yourself with the price diagonal of the main expenses, so that you can see a
+                                rough picture of the future budget.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                                Why consulting if you have your own internal specialists?
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                                If you use the services once, then later I will
+                                forced to constantly use their services?
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
+                                What do consultants really give / sell? What can they give
+                                our company?
+                            </a>
+                        </div>
+                        <div id="collapseFour" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
+                                An external consultant will not understand our internal specifics
+                            </a>
+                        </div>
+                        <div id="collapseFive" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseSix">
+                                Who are your consultants? Why should we trust them.
+                            </a>
+                        </div>
+                        <div id="collapseSix" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseSeven">
+                                How long does one project last on average? How is the payment done?
+                            </a>
+                        </div>
+                        <div id="collapseSeven" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                Lorem ipsum..
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid">
+        <div class="row mt-100 need-more-help">
+            <div class="col-lg-6">
+                <h2>Need more help?</h2>
+            </div>
+            <div class="col-lg-6">
+                <p>It should be noted that, diluted with a fair amount of empathy, rational thinking improves the quality of the prioritization of reason over emotions.</p>
+                <button class="active-btn mt-50">Contact us</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

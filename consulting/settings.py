@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
     'infopages.apps.InfopagesConfig',
     'entrepreneur.apps.EntrepreneurConfig',
+    'investors.apps.InvestorsConfig',
 
     'djmoney',
 ]
