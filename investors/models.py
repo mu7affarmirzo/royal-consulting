@@ -9,6 +9,8 @@ from uuid import uuid4
 import random as r
 
 from djmoney.models.fields import MoneyField
+from django_countries.fields import CountryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 def upload_location(instance, filename):
     ext = filename.split('.')[-1]
@@ -101,8 +103,19 @@ class BusinessModel(models.Model):
     def __str__(self):
         return str(self.title)
 
+class UserApplication(models.Model):
+    country = CountryField()
+    full_name = models.CharField(max_length=500, null=True, blank=True)
+    company_name = models.CharField(max_length=500, null=True, blank=True)
+    postion = models.CharField(max_length=500, null=True, blank=True)
+    number = PhoneNumberField()
+    email = models.EmailField(max_length=500, null=True, blank=True)
+    investment_value = models.CharField(max_length=500, null=True, blank=True)
+    message = models.TextField(null=True, blank=True)
+    date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
 
-
+    def __str__(self):
+        return str(self.full_name)
 
 
 

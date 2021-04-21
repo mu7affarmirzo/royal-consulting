@@ -5,7 +5,7 @@ app_name = 'investor'
 
 urlpatterns = [
     path('', investor_view, name='investor-index'),
+    path('form/', FormView.as_view(), name='investor-form'),
+    path('my/', create_applic_view, name='form'),
     path('<slug>/', detail_industies_view, name='detailed-industies'),
-    # path('news/', news_list_view, name='news-list'),
-    # path('news/<slug>/', detail_news_view, name="news-detail"),
 ]
