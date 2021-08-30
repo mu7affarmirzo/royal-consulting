@@ -25,8 +25,11 @@ class NewsModel(models.Model):
     date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
     slug = models.SlugField(blank=True, unique=True)
 
+
     class Meta:
         ordering = ['-date_published']
+        verbose_name = 'News and Analytics'
+        verbose_name_plural = 'News and Analytics'
 
     @property
     def imageURL(self):
@@ -47,35 +50,22 @@ class NewsModel(models.Model):
     def __str__(self):
         return str(self.title)
 
-class IndustriesModel(models.Model):
-    title = models.CharField(max_length=500, null=True, blank=True)
-    body = RichTextField(null=True, blank=True)
-    little_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
-    main_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
-    date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
-    slug = models.SlugField(blank=True, unique=True)
 
-    class Meta:
-        ordering = ['-date_published']
 
-    @property
-    def imageURL(self):
-        try:
-            url = self.little_image.url
-        except:
-            url = ''
-        return url
 
-    @property
-    def mainimageURL(self):
-        try:
-            url = self.main_image.url
-        except:
-            url = ''
-        return url
 
-    def __str__(self):
-        return str(self.title)
+
+
+
+
+
+
+
+
+
+
+
+
 
 class InfoPageModel(models.Model):
     title = models.CharField(max_length=500, null=True, blank=True)
@@ -112,9 +102,48 @@ class InfoPageModel(models.Model):
 
 
 
+
+
+class IndustriesModel(models.Model):
+    title = models.CharField(max_length=500, null=True, blank=True)
+    body = RichTextField(null=True, blank=True)
+    little_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    main_image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
+    slug = models.SlugField(blank=True, unique=True)
+
+    class Meta:
+        ordering = ['-date_published']
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.little_image.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def mainimageURL(self):
+        try:
+            url = self.main_image.url
+        except:
+            url = ''
+        return url
+
+    def __str__(self):
+        return str(self.title)
+
+
+
+
+
 @receiver(post_delete, sender=NewsModel)
 def submission_delete(sender, instance, **kwargs):
-    instance.image.delete(False)
+    instance.little_image.delete(False)
+    instance.main_image.delete(False)
+
+
 
 def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:

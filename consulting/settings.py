@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'infopages.apps.InfopagesConfig',
-    'entrepreneur.apps.EntrepreneurConfig',
-    'investors.apps.InvestorsConfig',
+    'wedo.apps.WedoConfig',
+    'asia.apps.AsiaConfig',
+    'competence.apps.CompetenceConfig',
 
     'djmoney',
     'crispy_forms'
@@ -128,7 +129,6 @@ gettext = lambda s: s
 
 LANGUAGE_CODE = 'en'
 
-gettext = lambda s: s
 LANGUAGES = (
     ('uz', gettext('Uzbek')),
     ('en', gettext('English')),
@@ -143,7 +143,16 @@ LANGUAGES = (
 
 django.conf.locale.LANG_INFO.update(EXTRA_LANG_INFO)
 
-MODELTRANSLATION_LANGUAGES = ('uz', 'ru', 'en')
+MODELTRANSLATION_LANGUAGES = (
+    'uz',
+    'ru',
+    'en',
+    'zh-cn',
+    'ja',
+    'ko',
+    'de',
+    'ar',
+)
 MODELTRANSLATION_FALLBACK_LANGUAGES = ('ru', 'en')
 
 LOCALE_PATHS = [

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+
+    <div class="container-fluid">
+        <div class="row submenu">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Our Mission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Our Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row animation contacts">
+            <div class="col-lg-12 animation_top">
+                <div class="row my-5">
+                    <div class="col-md-6">
+                        <h2>Get in touch</h2>
+                        <form action="{% url 'competence:contact-us' %}" method="post">{% csrf_token %}
+
+                            <input type="text" name="full_name" class="input_form" placeholder="Full name" value="">
+                            <input type="text" name="phone_number" class="input_form" placeholder="Phone number">
+                            <input type="text" name="email" class="input_form" placeholder="Email">
+                            <textarea name="message" id="" class="input_form" placeholder="Message"></textarea>
+                            <button class="active-btn ml-auto">Send</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5 offset-md-1 contact-info">
+                        <h2 class="mt-lg-0 mt-4">Contacts</h2>
+                        <div>
+                            <h5 class="bold">
+                                <img src="{% static 'images/pin.svg' %}" alt="">
+                                Richmond Office (USA)
+                            </h5>
+                            <p class="ml-5">
+                                12833 Church Rd
+                                Henrico, VA 23233
+                            </p>
+                            <h5 class="bold mt-3 ml-5">
+                                Tashkent Office (Uzbekistan)
+                            </h5>
+                            <p class="ml-5">
+                                35, Beruniy Str., Shaykhantahur,
+                                Tashkent, Uzbekistan
+                            </p>
+                        </div>
+                        <p><img src="{% static 'images/mail.svg' %}" alt=""> <a href="mailto:info@royalco.us">info@royalco.us</a></p>
+                        <h5 class="bold">
+                            <img src="{% static 'images/call.svg' %}" alt="">
+                            +1 (804) 492 00 27, <br>
+                        </h5>
+                        <h5 class="bold ml-5">
+                            +1 (475) 473 50 50
+                        </h5>
+                        <h5 class="bold ml-5">
+                            +998 (93) 541 48 23
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

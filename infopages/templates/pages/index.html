@@ -16,10 +16,10 @@
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- fonts -->
-    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %} ">
+{#    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %} ">#}
     <!-- owl carousel styles -->
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">#}
     <!-- my styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -32,488 +32,634 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- owl carousel js -->
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/isInViewport.min.js' %}"></script>
+{#    <script src="{% static 'js/owl.carousel.min.js' %}"></script>#}
+{#    <script src="{% static 'js/isInViewport.min.js' %}"></script>#}
     <script src="{% static 'js/index.js' %}"></script>
     
 
 </head>
 
 <body>
-    <div class="wrapper">
-        <nav class="navbar navbar-expand-lg px-100 fixed-top" style="background: none;">
-            <!-- Brand -->
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt=""></a>
 
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <img src="{% static 'images/menu-icon.svg' %}" alt="">
-            </button>
 
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'infopages:about' %}">{% trans 'About us' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'investors:investor-index' %}">{% trans 'Investor' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'entrepreneur:entrepreneur-index' %}">{% trans 'Entrepreneur' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'infopages:news-list' %}">{% trans 'News' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:faq' %}">{% trans 'FAQ' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-{#                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">#}
-{#                                ENG#}
-{#                            </button>#}
-{#                            <div class="dropdown-menu">#}
-{#                                <a class="dropdown-item" href="#">ENG</a>#}
-{#                                <a class="dropdown-item" href="#">中國人</a>#}
-{#                                <a class="dropdown-item" href="#">한국어</a>#}
-{#                                <a class="dropdown-item" href="#">日本語</a>#}
-{#                                <a class="dropdown-item" href="#">Deutsche</a>#}
-{#                                <a class="dropdown-item" href="#">عربي</a>#}
-{#                            </div>#}
-                            <form id="languageForm" action="{% url 'set_language' %}" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="next" value="{{ redirect_to }}">
-                                <select id="languageSelect" name="language" class="form-select" aria-label="Language select">
+
+<div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg w-100">
+                <!-- Brand -->
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}" alt="logo"></a>
+
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.59888 14.2008H23.5989M5.59888 8.20081H23.5989M5.59888 20.2008H23.5989"
+                            stroke="#1D3B70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+{#                                <a type="button" class="nav-link active-link" data-toggle="dropdown">#}
+{#                                    Central Asia#}
+{#                                </a>#}
+                                <a type="button" class="nav-link" data-toggle="dropdown">
+                                    Central Asia
+                                </a>
+                                <div class="dropdown-menu">
+                                    {% for map in asia %}
+                                        <a class="dropdown-item" href="{% url 'asia:central-asia-detail' map.slug %}">{{ map.title }}</a>
+                                    {% endfor %}
+
+
+{#                                    <a class="dropdown-item" href="#">Economics</a>#}
+{#                                    <a class="dropdown-item" href="#">Central Asian Republics </a>#}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a type="button" class="nav-link" data-toggle="dropdown">
+                                    Competence
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'competence:about' %}">About</a>
+                                    <a class="dropdown-item" href="{% url 'competence:about' %}">Our mission</a>
+                                    <a class="dropdown-item" href="{% url 'competence:about' %}">Our team</a>
+                                    <a class="dropdown-item" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
+                                    <a class="dropdown-item" href="{% url 'competence:contact' %}">Contacts </a>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a type="button" class="nav-link" data-toggle="dropdown">
+                                    What are we doing?
+                                </a>
+
+{#                                    <div class="dropdown-menu">#}
+{#                                        {% for w in wedo %}#}
+{#                                            <a class="dropdown-item" href="{% url 'wedo:wedo-detail' w.slug %}">{{ w.title }}</a>#}
+{#                                        {% endfor %}#}
+{#                                    </div>#}
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'wedo:wedo-detail' '4225-1191' %}">Partnership cooperation</a>
+                                    <a class="dropdown-item" href="{% url 'wedo:wedo-detail' '113-9541' %}">Investor expectations</a>
+                                </div>
+
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a type="button" class="nav-link" data-toggle="dropdown">
+                                    Business Opportunities
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'wedo:opportunities-detail' '2491-8824' %}">Discover Industries</a>
+                                    <a class="dropdown-item" href="{% url 'wedo:opportunities-detail' '4746-2778' %}">Market Analysis</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a type="button" class="nav-link" data-toggle="dropdown">
+                                    Research and Analytics
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">News and analytics </a>
+                                    <a class="dropdown-item" href="#">Interesting Facts </a>
+                                    <a class="dropdown-item" href="#">Data and statistics </a>
+                                    <a class="dropdown-item" href="#">Recent Publications </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item d-flex">
+                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <select name="language" onchange="this.form.submit()" class="lang-select">
                                     {% get_current_language as LANGUAGE_CODE %}
                                     {% get_available_languages as LANGUAGES %}
                                     {% get_language_info_list for LANGUAGES as languages %}
+
                                     {% for language in languages %}
-                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
-                                            selected{% endif %}>
-                                        {{ language.name_local }}
-                                    </option>
+                                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                            {{ language.name_local }} ({{ language.code }})
+                                        </option>
                                     {% endfor %}
+
                                 </select>
                             </form>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="login-btn active-btn" href="login.html">{% trans 'Login' %}</a>
-                    </li>
-                </ul>
-            </div>
+                        </li>
 
-            <span class="line"></span>
-        </nav>
-
-        <!-- search bar -->
-        <form action="" class="search-bar">
-            <div class="overlay"></div>
-            <div class="bar">
-                <span></span>
-                <input type="text" placeholder="Search from site ...">
-                <button type="submit">{% trans 'Search' %}</button>
-                <button type="button" class="close-btn">&times;</button>
-            </div>
-        </form>
-
-        <!-- main page header section -->
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="overlay"></div>
-                    <img src="{% static 'images/carousel-item1.png' %}" alt="investor-image">
-                    <div class="carousel-caption">
-                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
-                            business? To expand your market coverage, contact
-                            us.</h3>
-                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
-                            businesses. Our main focus is investment in
-                            Uzbekistan. We provide a wide range of services to run your business.
-                        </p>
-                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
-                    </div>
+                    </ul>
                 </div>
-                <div class="carousel-item">
-                    <div class="overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                        alt="Los Angeles">
-                    <div class="carousel-caption">
-                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
-                            business? To expand your market coverage, contact
-                            us.</h3>
-                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
-                            businesses. Our main focus is investment in
-                            Uzbekistan. We provide a wide range of services to run your business.
-                        </p>
-                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="overlay"></div>
-                    <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                        alt="Los Angeles">
-                    <div class="carousel-caption">
-                        <h3 class="animate__animated animate__backInDown">Do you want to attract investment for your
-                            business? To expand your market coverage, contact
-                            us.</h3>
-                        <p class="animate__animated animate__backInUp">We help our clients build, sell and buy
-                            businesses. Our main focus is investment in
-                            Uzbekistan. We provide a wide range of services to run your business.
-                        </p>
-                        <a href="" class="active-btn animate__animated animate__bounce">Service request</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="carousel-prev" href="#carousel" data-slide="prev">
-                <img src="{% static 'images/chevron-left.svg' %}" alt="">
-            </a>
-            <a class="carousel-next" href="#carousel" data-slide="next">
-                <img src="{% static 'images/chevron-left.svg' %}" alt="">
-            </a>
+            </nav>
         </div>
-
-        <!-- main about section -->
-        <div class="about-section">
-            <div class="row animation">
-                <div class="col-lg-6 animation_left">
-                    <h1 class="section-title">About us</h1>
-                    <h2 class="subtitle">Audit service <br> Royal consulting</h2>
-                    <p>
-                        The audit service of Royal consulting is included in the list of the largest audit and
-                        consulting groups in Uzbekistan. Provides a wide range of audit, consulting and legal services.
-                        Among the clients are Uzbek and international companies, manufacturing, trade, construction
-                        enterprises, non-profit organizations and many others.
-                        <br> <br>
-                        The stability of the client base and staff, the results of independent audits and ratings are
-                        the best guarantee of the high quality of our work.
-                    </p>
-                </div>
-                <div class="col-lg-6 animation_right">
-                    <img src="{% static 'images/about-image.png' %}" class="w-100" alt="about-section-image">
-                </div>
-            </div>
-
-            <div class="row animation counter-block mt-100">
-                <div class="col-lg-4 animation_left">
-                    <img src="{% static 'images/countries.svg' %}" alt="">
-                    <h2 class="counter-number">6000</h2>
-                    <h5>Customers are served in over 120 countries</h5>
-                </div>
-                <div class="col-lg-4 animation_top">
-                    <img src="{% static 'images/home.svg' %}" alt="">
-                    <h2 class="counter-number">200</h2>
-                    <h5>Cities where our offices and representative offices are located</h5>
-                </div>
-                <div class="col-lg-4 animation_right">
-                    <img src="{% static 'images/people.svg' %}" alt="">
-                    <h2 class="counter-number">150</h2>
-                    <h5>Partners in our ecosystem</h5>
-                </div>
-            </div>
-
-            <div class="row animation profit-block mt-100">
-                <div class="col-lg-12">
-                    <h1 class="section-title">How we increase our <br> clients' profits</h1>
-                    <div class="row mt-5">
-                        <div class="col-lg-4 animation_left">
-                            <h5><img src="{% static 'images/analysis.png' %}" alt=""> Analyzing</h5>
-                            <p>
-                                We collect the maximum amount of initial data that increases our awareness of the
-                                project and does not allow us to make incorrect assumptions;
-                            </p>
-                        </div>
-                        <div class="col-lg-4 animation_top">
-                            <h5><img src="{% static 'images/certificate.png' %}" alt=""> We plan work</h5>
-                            <p>
-                                We draw up a work plan with deadlines and adhere to it;
-                            </p>
-                        </div>
-                        <div class="col-lg-4 animation_right">
-                            <h5><img src="{% static 'images/discussion.png' %}" alt=""> We advise</h5>
-                            <p>
-                                We actively consult with you, your employees, study the literature on the project;
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-lg-4 animation_left">
-                            <h5><img src="{% static 'images/problem-solving.png' %}" alt=""> Best solutions</h5>
-                            <p>
-                                We develop options for solutions. We also offer solutions that you never thought of;
-                            </p>
-                        </div>
-                        <div class="col-lg-4 animation_top">
-                            <h5><img src="{% static 'images/puzzle.png' %}" alt=""> Looking for vulnerabilities</h5>
-                            <p>
-                                We introduce you to all bottlenecks and potential sources of project vulnerability;
-                            </p>
-                        </div>
-                        <div class="col-lg-4 animation_right">
-                            <h5><img src="{% static 'images/deadline.png' %}" alt=""> Don't violate the terms</h5>
-                            <p>
-                                At all stages of the project and after its completion, we observe the regime
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row industries animation mt-100">
-                <div class="col-lg-12 animation_top">
-                    <h1 class="section-title">Industries</h1>
-                    <!-- Set up your HTML -->
-                    <div class="owl-carousel">
-
-
-                        {% for industy in industies %}
-                            <div>
-                                <img src="{{industy.imageURL}}" alt="">
-                                <div class="owl-carousel-caption">
-                                    <h5>{{ industy.title }}</h5>
-                                    <p style="overflow: none">{{industy.body|safe|truncatechars:180}}</p>
-                                    <a href="" class="more-btn">More</a>
-                                </div>
-                            </div>
-                        {% endfor %}
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row animation mt-100 central-asia-block">
-                <div class="col-lg-12">
-                    <div class="row mt-50">
-                        <div class="col-lg-5 flex-column d-flex justify-content-between mb-3 animation_left">
-                            <h1 class="section-title">Why is it profitable to invest <br> in Central Asia.</h1>
-                            <p>Central Asia, a region east of the Caspian Sea that includes Uzbekistan, Kazakhstan,
-                                Tajikistan, Kyrgyzstan and Turkmenistan, has significant potential to become an
-                                attractive investment destination. Compared to other emerging economies, Central Asia is
-                                receiving less attention from potential investors so far. Its potential in attracting
-                                foreign direct investment (FDI) is estimated at up to $ 170 billion, including $ 40-70
-                                billion in non-resource sectors, over the next 10 years.</p>
-                            <a href="{% url 'staticpages:central-asia' %}" class="active-btn">More</a>
-                        </div>
-                        <div class="col-lg-7 animation_right">
-                            <img src="{% static 'images/central-asia.png' %}" class="w-100" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row animation mt-100 investor-block">
-                <div class="col-lg-12">
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-lg-6 animation_left">
-                            <img src="{% static 'images/investor.png' %}" class="w-100" alt="">
-                        </div>
-                        <div class="col-lg-6 pl-lg-5 animation_right">
-                            <div class="block-caption">
-                                <h5>Are you an investor?</h5>
-                                <p class="my-4">If you are an investor looking for profitable options for investing in
-                                    promising young companies, we will help you</p>
-                                <a href="{% url 'home' %}" class="active-btn">More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center no-gutters">
-                        <div class="col-lg-6 order-1 order-lg-2 animation_left">
-                            <img src="{% static 'images/enterpreneur.png' %}" class="w-100" alt="">
-                        </div>
-                        <div class="col-lg-6 pl-lg-5 order-2 order-lg-1 animation_right">
-                            <div class="block-caption">
-                                <h5>Are you an entrepreneur?</h5>
-                                <p class="my-4 w-75">Offer your investment project to hundreds of potential investors.
-                                    To do this, you must leave an application for the search for investments.</p>
-                                <a href="{% url 'entrepreneurs:entrepreneur-index' %}" class="active-btn">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row animation mt-100 central-asia-block">
-                <div class="col-lg-12">
-                    <h1 class="section-title">Resources Central Asia</h1>
-                    <div class="row mt-50">
-                        <div class="col-lg-7 animation_left">
-                            <img src="{% static 'images/resources.png' %}" class="w-100" alt="">
-                        </div>
-                        <div class="col-lg-5 flex-column d-flex justify-content-between animation_right">
-                            <p>Uzbekistan in international rankings. we will indicate several ratings by agency.
-                                Fitch Ratings BB- stable
-                                S&P - BB- stable
-                                Our resources. Uzbekistan ranks 14th in the world in natural gas production, third in
-                                the world in export and sixth in cotton production, seventh in the world in uranium
-                                reserves (4% of world uranium reserves), in total gold reserves in Uzbekistan. place in
-                                the world, and in terms of gold production - in seventh.</p>
-                            <a href="{% url 'staticpages:resources-asia' %}" class="active-btn">More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row animation mt-100 blog-section">
-                <div class="col-lg-12 animation_top">
-                    <h1 class="section-title">Our blog</h1>
-                    <div class="row mt-3">
-
-                        {% for news in homenews %}
-                            <div class="col-lg-3 col-md-6">
-                                <div class="blog-section-item">
-                                    <img src="{{news.imageURL}}" alt="">
-                                    <div class="blog-section-caption">
-                                        <h6>{{news.title}}</h6>
-                                        <p>{{news.body|safe|truncatechars:180}}</p>
-                                        <div class="d-flex justify-content-between">
-                                            <a href="{% url 'infopages:news-detail' news.slug %}" class="more-btn">More</a> <span>14.03.2021</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-{#                        <div class="col-lg-3 col-md-6">#}
-{#                            <div class="blog-section-item">#}
-{#                                <img src="{% static 'images/blog1.png' %}" alt="">#}
-{#                                <div class="blog-section-caption">#}
-{#                                    <h6>Our victory was accompanied by the voice of the coming generation</h6>#}
-{#                                    <p>By the way, thorough competitor research is gaining popularity ...</p>#}
-{#                                    <div class="d-flex justify-content-between">#}
-{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="col-lg-3 col-md-6">#}
-{#                            <div class="blog-section-item">#}
-{#                                <img src="{% static 'images/blog2.png' %}" alt="">#}
-{#                                <div class="blog-section-caption">#}
-{#                                    <h6>Speakers of the State Duma chamber are indignant</h6>#}
-{#                                    <p>It should be noted that the modern development methodology speaks about the#}
-{#                                        capabilities of the system ...</p>#}
-{#                                    <div class="d-flex justify-content-between">#}
-{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="col-lg-3 col-md-6">#}
-{#                            <div class="blog-section-item">#}
-{#                                <img src="{% static 'images/blog3.png' %}" alt="">#}
-{#                                <div class="blog-section-caption">#}
-{#                                    <h6>Noble aspirations will not save: the sky darkens</h6>#}
-{#                                    <p>As part of the big picture, emerging economies ...</p>#}
-{#                                    <div class="d-flex justify-content-between">#}
-{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="col-lg-3 col-md-6">#}
-{#                            <div class="blog-section-item">#}
-{#                                <img src="{% static 'images/blog4.png' %}" alt="">#}
-{#                                <div class="blog-section-caption">#}
-{#                                    <h6>A trifle, but nice: the young growth grows older</h6>#}
-{#                                    <p>A course towards a socially oriented national project ...</p>#}
-{#                                    <div class="d-flex justify-content-between">#}
-{#                                        <a href="" class="more-btn">More</a> <span>14.03.2021</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-            
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer px-100">
-            <div class="container-fluid">
+    </div>
+    <!-- subnavbar -->
+    <div class="container-fluid">
+        <div class="row submenu">
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <img src="{% static 'images/logo-white.png' %}" class="logo" alt="">
-                        <ul class="nav mt-4">
+                    <ul class="nav">
+                        {% for map in asia %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a>
+                                <a class="nav-link" href="{% url 'asia:central-asia-detail' map.slug %}">{{ map.title }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{% static 'images/instagram.png' %}" alt=""></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{% static 'images/twitter.png' %}" alt=""></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><img src="{% static 'images/telegram.png' %}" alt=""></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2">
-                        <h6>{% trans 'Useful links' %}</h6>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'Investor' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'Entrepreneur' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'About us' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'News' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">{% trans 'FAQ' %}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3">
-                        <h6>{% trans 'Contacts' %}</h6>
-                        <p class="mb-1">{% trans 'Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002' %}</p>
-                        <p><a href="" class="nav-link">{% trans 'E-mail: info@royalco.com' %}</a></p>
-                        <p><a href="" class="nav-link">{% trans 'Phone: +99 899 999-99-99' %}</a></p>
-                        <p><a href="" class="nav-link">{% trans 'Working days: Mon. - Sat: 9:00 to 18:00' %}</a></p>
-                    </div>
-                    <div class="col-lg-4">
-                        <h6>{% trans 'Get in touch' %}</h6>
-                        <form action="">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="text" placeholder="Name">
-                                    <input type="text" placeholder="Phone number">
-                                    <input type="text" placeholder="Message">
-                                </div>
+                        {% endfor %}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">Geography</a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">Economics</a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">Central Asian Republics</a>#}
+{#                        </li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header -->
+    <div class="container-fluid">
+        <div class="row animation">
+            <div id="demo" class="carousel slide animate__animated animate__backInDown" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/back.png'%}" alt="Los Angeles">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <h3 class="animate__animated animate__fadeInDownBig">Invest in Central Asia</h3>
+                                <p class="bold animate__animated animate__fadeInLeft">Find out the region’s potentials
+                                    and opportunities for foreign
+                                    investors</p>
+                                <p class="animate__animated animate__fadeInLeft">Central Asian Republics, namely
+                                    Uzbekistan, Kazakhstan, Kyrgyzistan, Tajikistan,
+                                    and Turkmenistan, have a great potential to be an attractive investment
+                                    destination. </p>
+                                <a href=""
+                                    class="active-btn d-block mt-lg-5 animate__animated animate__fadeInUpBig">Read
+                                    more</a>
                             </div>
-                            <button class="active-btn" type="submit">{% trans 'Send' %}</button>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/back.png'%}" alt="Chicago">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <h3 class="animate__animated animate__fadeInDownBig">Invest in Central Asia</h3>
+                                <p class="bold animate__animated animate__fadeInLeftBig">Find out the region’s
+                                    potentials and opportunities for foreign
+                                    investors</p>
+                                <p class="animate__animated animate__fadeInLeftBig">Central Asian Republics, namely
+                                    Uzbekistan, Kazakhstan, Kyrgyzistan, Tajikistan,
+                                    and Turkmenistan, have a great potential to be an attractive investment
+                                    destination. </p>
+                                <a href=""
+                                    class="active-btn d-block mt-lg-5 animate__animated animate__fadeInUpBig">Read
+                                    more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/back.png'%}" alt="New York">
+                        <div class="carousel-caption">
+                            <div class="container">
+                                <h3 class="animate__animated animate__fadeInDownBig">Invest in Central Asia</h3>
+                                <p class="bold animate__animated animate__fadeInLeftBig">Find out the region’s
+                                    potentials and opportunities for foreign
+                                    investors</p>
+                                <p class="animate__animated animate__fadeInLeftBig">Central Asian Republics, namely
+                                    Uzbekistan, Kazakhstan, Kyrgyzistan, Tajikistan,
+                                    and Turkmenistan, have a great potential to be an attractive investment
+                                    destination. </p>
+                                <a href=""
+                                    class="active-btn d-block mt-lg-5 animate__animated animate__fadeInUpBig">Read
+                                    more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- news section -->
+    <div class="container news">
+        <div class="row no-gutters">
+            <h3 class="big-title mt-5">News</h3>
+            <div class="container-fluid p-0">
+                <div class="row animation mt-4">
+{#                    {% for news in homenews %}#}
+{#                            <div class="col-lg-3 col-md-6">#}
+{#                                <div class="blog-section-item">#}
+{#                                    <img src="{{news.imageURL}}" alt="">#}
+{#                                    <div class="blog-section-caption">#}
+{#                                        <h6>{{news.title}}</h6>#}
+{#                                        <p>{{news.body|safe|truncatechars:180}}</p>#}
+{#                                        <div class="d-flex justify-content-between">#}
+{#                                            <a href="{% url 'infopages:news-detail' news.slug %}" class="more-btn">More</a> <span>14.03.2021</span>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+
+
+                    {% for news in homenews %}
+                        <div class="col-md-3 animation_left">
+                            <a href="{% url 'infopages:news-detail' news.slug %}">
+                                <p>{{news.date_published}}</p>
+                                <p class="bold">{{news.title}}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+
+{#                    <div class="col-md-3 animation_top">#}
+{#                        <a href="">#}
+{#                            <p>Jul 5, 2021</p>#}
+{#                            <p class="bold">И нет сомнений, что базовые сценарии поведения пользователей.</p>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="col-md-3 animation_top">#}
+{#                        <a href="">#}
+{#                            <p>Jul 5, 2021</p>#}
+{#                            <p class="bold">И нет сомнений, что базовые сценарии поведения пользователей.</p>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="col-md-3 animation_right">#}
+{#                        <a href="">#}
+{#                            <p>Jul 5, 2021</p>#}
+{#                            <p class="bold">И нет сомнений, что базовые сценарии поведения пользователей.</p>#}
+{#                        </a>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- discover central asia -->
+    <div class="container">
+        <div class="row no-gutters">
+            <h3 class="big-title mt-5">Discover Central Asia</h3>
+            <div class="container-fluid p-0">
+                <div class="row animation mt-4">
+                    <div class="col-lg-6 animation_left">
+                        <div class="dca-block mb-lg-0 mb-3" style="background-image: url({% static 'images/flags.png'%})">
+                            <div class="dca-block-inner">
+                                <p class="bold">Policies to improve the investment climate</p>
+                                <p>In recent years, the countries of Central Asia, specifically Uzbekistan and
+                                    Kazakhstan, are actively introducing an effective policy to improve the investment
+                                    climate, protect the rights of foreign investors, and equal opportunities to enhance
+                                    market competition in the region.</p>
+                                <a href="" class="active-btn d-block mt-4">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex flex-column justify-content-between animation_right">
+                        <div class="dca-block-right mb-3">
+                            <a href="{% url 'asia:central-asia-detail' '9688-485' %}" style="background-image: url({% static 'images/kz.png' %})">
+                                <p class="bold">Kazakhstan: Country Profile</p>
+                                <p>Please read about our latest country analysis</p>
+                            </a>
+                        </div>
+                        <div class="dca-block-right mt-3">
+                            <a href="{% url 'asia:central-asia-detail' '5951-7651' %}" style="background-image: url({% static 'images/uzb.png' %})">
+                                <p class="bold">Investment in Uzbekistan</p>
+                                <p>Adding Solar Power to Country's Future </p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- key facts -->
+    <div class="container-fluid">
+        <div class="row key-facts mt-5 py-5">
+            <div class="container">
+                <div class="row no-gutters justify-content-lg-start justify-content-center">
+                    <h3 class="big-title">Key Facts and Figures</h3>
+                    <div class="container-fluid p-0 mt-5">
+                        <div class="row animation justify-content-lg-start text-center">
+                            <div class="col-lg-4 animation_left">
+                                <div class="inner">
+                                    <div class="data">
+                                        <div class="digit">77</div>
+                                        <p class="data-bottom">Global peace rank</p>
+                                    </div>
+                                    <a href="">#70 position in the Global Peace Index earned Kazakhstan</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 animation_top">
+                                <div class="inner">
+                                    <div class="data">
+                                        <div class="digit">77.3</div>
+                                        <p class="data-bottom">Million Population</p>
+                                    </div>
+                                    <a href="">Central Asia is home for 73.3 million people, the fastest growing
+                                        population in the world</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 animation_right">
+                                <div class="inner">
+                                    <div class="data">
+                                        <img src="{% static 'images/key-facts.svg'%}" alt="gdp">
+                                        <p class="data-bottom">Growth in GDP</p>
+                                    </div>
+                                    <a href="">GDP growth predicted by 4.8% growth in 2021, driven by recovery
+                                        production capacities, exports and FDI</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- social networks block -->
+    <div class="container social-networks">
+        <div class="row py-3 align-items-center">
+            <div class="col-lg-3 text-lg-left text-center">
+                <p class="m-0 bold">We are on social networks </p>
+                <p class="m-0 bold">Follow and subscribe to us:</p>
+            </div>
+            <div class="col-lg-9">
+                <div class="container-fluid p-0">
+                    <div class="row mt-3 mt-lg-0">
+                        <div class="col-md-3">
+                            <a href="https://twitter.com/RoyalConsultin2">
+                                <img src="{% static 'images/twitter.svg'%}" alt="">
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.facebook.com/royalconsultinginc">
+                                <img src="{% static 'images/facebook.svg'%}" alt="">
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.linkedin.com/company/77359142/admin/">
+                                <img src="{% static 'images/telegram.svg'%}" alt="">
+                                <span>Telegram</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.instagram.com/royalconsultinginc/">
+                                <img src="{% static 'images/instagram.svg'%}" alt="">
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- map section -->
+    <div class="container-fluid">
+        <div class="row map-ca">
+            <div class="container">
+                <div class="row no-gutters py-5">
+                    <div class="col-md-8 col-lg-9">
+                        <svg x="0px" y="0px" viewBox="0 0 778 554" fill="none" id="map"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path id="kz" data-title="Kazakhstan" data-area="2,724,900 sq. km"
+                                data-population="18,711,560" data-gdp="$569.813 billion" data-percapita-gdp="$30,178"
+                                d="M776.734 197.559L768.411 197.416L765.883 199.797L765.207 208.82L762 213.676L756.587 215.806L746.752 217.807L744.408 222.994L742.497 231.207L743.655 243.158L744.983 249.879L741.71 255.24L736.924 255.998L728.397 261.732L726.123 257.783L719.881 257.127L713.724 257.833L706.45 255.81L698.044 251.796L694.932 251.809L694.45 256.07L688.503 274.054L685.889 280.331L681.534 297.802L686.416 299.9L687.151 303.957L684.436 308.544L680.393 305.965L675.107 307.512L667.732 303.477L653.465 308.387L649.303 308.471L638.333 311.705L634.764 315.003L637.157 317.327L642.071 317.043L645.885 318.699L643.62 326.942L643.974 336.013L646.655 341.442L650.622 353.694L649.928 356.766L652.178 360.644L644.643 363.737L647.57 367.159L641.977 370.135L640.354 373.556L642.147 384.662L641.2 385.827L635.703 380.075L627.491 378.929L622.027 373.533L621.291 371.126L614.186 370.296L609.087 368.383L599.538 368.568L595.325 367.585L584.533 367.135L578.985 365.6L570.697 366.974L556.988 366.604L554.052 369.685L542.847 367.343L534.743 363.4L526.87 358.59L515.493 363.609L514.438 364.789L511.875 375.418L509.227 377.725L501.074 376.256L499.129 374.268L490.036 371.16L481.291 369.49L470.619 371.783L466.161 376.921L463.684 381.963L464.715 384.32L460.3 386.375L458.364 389.306L454.599 388.69L448.492 395.297L440.273 399.094L434.639 403.717L428.864 406.853L427.374 410.963L422.612 415.084L419.696 419.259L420.015 424.711L418.011 425.991L414.13 424.799L409.479 420.949L410.721 415.42L407.347 411.176L385.975 412.548L383.201 409.299L380.714 397.326L379.961 390.829L370.64 390.58L372.374 365.102L366.708 368.058L360.864 356.742L356.558 353.941L349.606 346.131L340.803 350.432L317.248 348.412L295.622 352.064L294.065 351.983L278.259 334.115L275.349 328.124L251.837 312.387L228.612 296.836L208.078 302.754L179.465 312.015L179.473 342.639L179.482 366.709L179.497 407.993L171.261 409.501L169.156 408.644L165.629 404.541L159.97 395.568L159.04 392.774L154.744 388.7L144.129 382.089L135.823 383.074L127.535 385.416L120.303 389.144L113.123 396.329L112.523 388.12L115.499 379.685L115.086 371.092L107.219 368.279L102.966 368.753L100.741 367.193L96.4021 360.725L90.2879 360.32L90.4135 352.24L87.3194 347.872L83.5123 339.694L81.432 333.477L78.6578 331.555L71.9167 329.947L70.4211 327.793L71.2747 323.111L73.4064 321.971L81.9998 321.85L88.0377 325.257L91.835 324.191L85.7625 316.946L85.4329 312.411L89.4245 308.592L92.5799 302.201L98.6182 301.081L113.834 301.094L124.27 303.572L124.405 300.863L119.67 298.441L118.46 296.365L123.559 285.573L125.344 279.428L124.262 269.598L126.013 266.225L124.093 261.027L121.166 258.291L112.919 257.275L107.312 261.484L98.8467 258.861L97.0441 256.506L88.055 253.936L83.1409 255.872L76.7123 260.297L73.6008 260.372L65.6082 267.197L61.0412 268.933L53.1758 270.385L50.977 275.416L39.1276 269.08L37.207 266.753L39.0345 263.535L42.2905 265.078L45.7831 263.302L38.0282 248.02L29.5956 236.046L17.6281 234.385L14.0176 236.171L10.2278 230.297L10.7172 225.188L8.52808 220.682L1.98898 217.018L1 212.372L2.78526 205.69L8.72242 197.192L8.789 194.235L4.67933 189.355L6.34441 179.667L8.2899 175.076L14.0766 168.975L14.6671 162.586L18.0412 158.723L21.8997 159.464L24.6398 162.321L31.7863 172.731L35.7779 175.791L41.9608 172.837L43.5669 170.325L40.8522 160.187L39.9813 152.219L42.9082 152.78L52.7184 145.237L56.0432 138.227L62.2245 136.758L70.3107 131.965L80.7386 118.504L87.7746 121.015L91.2255 126.293L96.2668 126.03L103.854 120.238L110.019 119.98L114.594 126.097L123.5 126.648L129.21 126.076L132.956 128.607L135.882 133.113L142.614 137.262L149.854 147.391L150.801 153.299L154.21 151.005L153.373 144.386L155.673 140.815L164.596 148.469L171.209 152.765L176.074 152.753L180.877 149.405L182.67 145.452L189.293 140.164L191.745 141.339L199.205 138.785L202.394 139.667L207.409 144.117L211.434 143.023L214.962 137.979L224.882 138.825L228.469 141.635L234.87 149.977L245.704 152.207L247.049 156.028L252.563 153.359L255.288 146.824L258.281 145.771L261.631 149.685L268.295 150.9L274.097 149.944L282.614 144.963L286.343 133.783L285.76 130.895L282.115 127.311L264.996 120.899L263.525 117.153L257.427 113.527L257.393 110.879L264.252 106.256L268.913 105.471L274.004 101.441L274.808 97.8764L271.788 92.3982L271.424 86.9044L276.102 79.719L282.834 78.9752L293.753 80.6299L294.53 75.4283L287.764 71.5983L278.994 69.7255L279.916 61.2948L274.808 59.0222L277.354 54.7817L277.929 47.991L281.557 45.219L292.89 48.5511L295.012 46.7305L303.758 46.3868L306.303 44.5632L314.709 43.3971L316.942 41.2603L332.429 38.1286L341.14 34.3061L344.736 35.3526L350.014 33.9004L354.411 34.9538L355.933 29.9803L360.491 26.457L374.701 25.0082L402.729 18.2339L409.976 15.3433L413.217 12.2601L412.497 8.64623L418.569 7.18129L427.189 1L437.017 2.09305L450.15 8.59291L455.944 4.59109L460.74 3.82486L464.014 9.73982L469.264 27.2433L467.506 39.9154L472.142 41.6703L484.869 40.1336L489.911 37.9623L492.159 42.8186L492.481 47.9682L495.949 46.9477L496.642 42.451L502.198 43.3321L506.106 47.4369L511.089 48.0201L515.614 44.6282L516.772 49.0981L511.443 52.9113L509.279 59.7706L512.788 63.9188L516.086 60.4831L524.197 59.3498L530.567 62.782L531.496 58.2028L538.779 52.453L542.94 52.4175L549.123 47.7804L550.272 43.9007L554.459 43.3744L566.071 36.663L576.026 36.3396L573.463 42.0966L569.039 43.1306L571.966 48.6806L593.466 66.7933L596.434 70.2959L608.165 90.2461L627.085 125.751L636.945 147.565L641.404 143.428L645.277 142.379L645.75 135.194L649.598 132.337L653.92 132.209L658.691 134.957L658.64 142.379L663.654 142.071L665.135 148.616L674.05 147.812L677.188 149.483L684.723 148.984L689.814 143.984L694.736 143.863L697.419 141.084L701.172 140.924L708.041 144.172L712.379 147.565L716.777 155.201L718.334 162.142L724.989 164.701L732.271 168.889L732.492 173.849L736.476 180.615L739.553 181.815L754.971 185.479L763.151 177.538L763.235 182.233L767 185.81L769.688 190.674L775.034 193.763L776.734 197.559Z"
+                                fill="#C8C832" stroke="white" />
+                            <path id="tm" data-title="Turkmenistan" data-area="491,210 sq. km"
+                                data-population="6,031,187" data-gdp="$112.659 billion" data-percapita-gdp="$19,526"
+                                d="M380.409 502.928L372.527 501.331L365.98 497.633L363.629 500.064L361.981 505.256L353.118 505.575L347.906 508.102L342.087 526.918L339.178 529.627L334.112 532.308L332.54 534.673H329.731L315.371 539.227L316.537 542.53L314.38 547.966L305.88 552.932L299.063 552.54L293.938 548.018L288.906 548.591L285.541 547.686L281.759 543.665L280.187 543.904L280 538.078L278.106 535.509L279.24 532.622L277.472 519.766L262.645 519.882L257.334 512.139L255.161 510.264L247.802 506.988L244.088 503.278L241.679 498.796L233.577 494.878L226.337 495.957L223.021 495.304L220.112 492.481L212.517 489.526L207.053 488.506L202.672 482.007L197.2 482.082L194.689 481.19L188.329 481.199L184.286 485.469L171.895 484.825L168.133 486.006L162.313 489.601L157.991 493.937L156.02 499.243L145.474 503.311L140.187 503.046L138.463 488.98L139.046 480.326L138.775 474.748L139.316 464.143L134.537 457.594L129.176 454.515L126.638 455.116L125.15 452.272L127.255 447.907L130.191 449.697L131.763 446.425L132.051 440.459L130.469 439.189L122.528 438.506L120.829 440.382L117.902 432.724L117.691 428.254L119.906 421.063L121.69 412.185L125.539 417.557L129.108 418.619L134.488 417.726L137.321 421.566L139.341 421.99L145.499 420.184L147.909 417.313L152.248 417.378L155.352 415.892L155.225 411.344L153.103 408.255L147.241 403.935L143.63 399.985L138.893 385.359L134.673 384.208L125.895 385.303L122.199 388.309L119.238 395.074L120.549 396.592L119.535 404.496L115.33 399.725L113.124 393.33L120.303 386.144L127.536 382.417L135.824 380.074L144.129 379.09L154.744 385.7L159.04 389.774L159.97 392.568L165.629 401.542L169.156 405.645L171.261 406.502L179.498 404.993L199.323 406.479L201.243 404.282L199.332 401.735L198.3 391.377L203.341 385.541L206.258 383.694L214.497 382.828L218.589 375.149L222.498 376.182L222.979 369.968L227.124 370.624L229.255 367.621L234.743 373.244L239.437 374.221L242.357 378.541L245.679 380.005L253.443 380.12L256.26 382.805L255.431 388.878L258.181 390.071L257.58 395.357L258.771 398.075L257.851 403.031L264.811 407.536L270.529 406.928L281.464 408.209L284.661 406.162L287.477 407.075L292.4 410.783L296.062 421.118L301.389 429.919L302.658 437.302L306.642 441.716L322.941 453.628L327.033 458.273L335.457 464.035L338.266 463.447L344.93 469.356L352.872 474.152L363.088 481.468L367.741 480.736L373.762 483.212L376.848 485.503L381.408 486.983L382.456 488.883L380.478 492.419L380.409 502.928Z"
+                                fill="#C8C832" stroke="white" />
+                            <path id="kg" data-title="Kyrgyzistan" data-area="199,951 sq. km"
+                                data-population="6,586,600" data-gdp="$35.324 billion" data-percapita-gdp="$5,470"
+                                d="M641.2 382.828L641.328 386.876L634.171 387.809L632.751 390.299L623.753 393.261L613.247 398.946L606.008 403.732L605.696 406.028L601.449 411.23L595.58 411.736L591.131 413.326L579.798 412.15L576.693 413.597L573.183 419.635L570.148 426.988L565.918 427.453L558.552 430.639L554.443 429.997L553.063 423.082L551.863 422.525L546.533 426.209L542.025 426.988L538.931 429.597L535.842 430.462L530.735 434.781L522.726 437.125L519.748 443.169L521.263 447.961L519.512 450.87L515.867 451.855L512.795 451.571L508.314 453.694L501.403 454.032L496.972 453.408L491.601 454.613L489.166 457.803L485.597 454.242L481.089 456.12L479.677 452.489L476.133 451.756L473.435 448.172L466.965 450.759L465.823 452.762L460.647 452.73L458.253 449.005L451.343 449.541L439.029 448.775L433.295 449.981L431.984 444.137L433.472 438.98L435.849 440.447L437.727 435.778L446.04 433.166L455.276 436.983L464.707 433.532L464.926 432.247L471.532 431.049L478.925 434.405L483.939 431.758L487.279 427.253L491.593 428.186L492.439 423.759L495.594 425.109L499.527 421.945L505.988 418.541L503.646 416.675L497.328 416.428L491.721 412.049L488.354 412.488L487.914 408.749L482.466 408.209L480.826 402.683L473.747 404.496L473.511 409.705L467.835 409.288L461.586 406.502L458.981 401.486L455.657 402.693L450.126 398.651L455.344 394.734L458.693 390.888L461.982 389.685L462.72 387.204L470.085 383.522L466.414 380.393L464.715 381.32L463.684 378.963L466.16 373.921L470.619 368.783L481.291 366.491L490.036 368.16L499.129 371.269L501.074 373.257L509.227 374.725L511.875 372.418L514.438 361.79L515.493 360.609L526.87 355.59L534.743 360.401L542.846 364.344L554.052 366.686L556.988 363.605L570.697 363.974L578.985 362.6L584.533 364.136L595.325 364.586L599.538 365.568L609.087 365.384L614.186 367.296L621.291 368.127L622.026 370.533L627.491 375.929L635.703 377.075L641.2 382.828ZM469.653 440.879L470.085 437.003L467.26 436.219L465.949 440.812L469.653 440.879Z"
+                                fill="#C8C832" stroke="white" />
+                            <path id="uz" data-title="Uzbekistan" data-area="448,978 sq. km"
+                                data-population="34,588,900" data-gdp="$275.806 billion" data-percapita-gdp="$9,595"
+                                d="M464.715 381.32L466.415 380.393L470.086 383.522L462.72 387.204L461.982 389.685L458.694 390.888L455.344 394.734L450.126 398.651L455.657 402.693L458.982 401.486L461.586 406.502L467.836 409.288L473.512 409.705L473.748 404.496L480.826 402.683L482.467 408.209L487.914 408.748L488.354 412.488L491.721 412.049L497.329 416.428L503.646 416.675L505.988 418.541L499.527 421.945L495.595 425.109L492.439 423.759L491.593 428.186L487.28 427.253L483.94 431.758L478.925 434.405L471.532 431.049L464.927 432.247L459.117 433.188L453.965 426.887L460.241 421.475L460.986 419.703L455.091 412.554L452.241 415.882L441.203 421.776L435.512 418.262L431.552 424.05L433.421 430.039L431.968 433.532L426.698 432.656L421.006 433.652L423.899 436.948L425.126 440.504L420.743 442.212L419.737 447.259L417.394 449.684L410.038 449.005L403.22 447.588L397.638 451.437L396.174 456.952L401.257 459.209L402.408 462.685L410.544 463.829L411.398 465.578L409.479 470.982L411.314 477.955L414.917 481.478L414.172 486.446L410.24 491.22L405.03 499.605L403.98 507.146L399.372 504.885L395.608 506.254L390.83 503.259L386.228 502.374L380.409 502.928L380.478 492.419L382.456 488.883L381.408 486.983L376.848 485.503L373.762 483.212L367.741 480.736L363.088 481.468L352.872 474.152L344.93 469.356L338.266 463.447L335.457 464.035L327.033 458.273L322.941 453.628L306.642 441.715L302.658 437.301L301.39 429.919L296.062 421.118L292.4 410.782L287.477 407.074L284.661 406.162L281.464 408.209L270.529 406.927L264.811 407.536L257.851 403.03L258.771 398.075L257.58 395.357L258.181 390.071L255.431 388.878L256.26 382.805L253.444 380.12L245.679 380.004L242.357 378.54L239.438 374.221L234.743 373.244L229.255 367.62L227.124 370.624L222.979 369.968L222.498 376.182L218.589 375.149L214.497 382.828L206.258 383.694L203.341 385.541L198.3 391.376L199.332 401.735L201.243 404.282L199.323 406.479L179.498 404.993L179.482 363.709L179.473 339.64L179.465 309.015L208.078 299.754L228.612 293.836L251.837 309.387L275.349 325.124L278.259 331.115L294.065 348.983L295.622 349.064L317.248 345.412L340.803 347.433L349.606 343.131L356.558 350.941L360.864 353.743L366.708 365.059L372.374 362.102L370.641 387.581L379.962 387.829L380.715 394.326L383.201 406.299L385.975 409.548L407.347 408.176L410.721 412.42L409.479 417.949L414.13 421.799L418.011 422.992L420.016 421.711L419.696 416.259L422.612 412.084L427.374 407.964L428.864 403.853L434.639 400.717L440.273 396.094L448.493 392.297L454.599 385.69L458.364 386.306L460.3 383.375L464.715 381.32ZM469.653 440.879L465.95 440.812L467.26 436.219L470.086 437.003L469.653 440.879Z"
+                                fill="#C8C832" stroke="white" />
+                            <path id="tj" data-title="Tajikistan" data-area="143,100 sq. km" data-population="9,537,645"
+                                data-gdp="$30.547 billion" data-percapita-gdp="$3,354"
+                                d="M464.927 432.247L464.707 433.532L455.276 436.983L446.041 433.165L437.728 435.778L435.849 440.447L433.473 438.98L431.985 444.136L433.296 449.981L439.029 448.775L451.343 449.541L458.254 449.005L460.647 452.73L465.824 452.762L466.965 450.758L473.436 448.171L476.133 451.756L479.677 452.488L481.089 456.12L485.597 454.241L489.166 457.803L491.601 454.613L496.972 453.408L501.404 454.032L508.315 453.694L512.796 451.571L515.867 451.854L515.41 457.267L518.996 462.839L517.093 466.459L519.106 472.509L523.378 474.142L525.39 471.187L528.172 471.219L537.087 474.865L538.814 477.437L537.603 480.585L537.933 484.738L540.766 492.739L539.928 496.854L544.209 502.034L539.869 505.723L535.454 501.82L527.835 501.321L526.076 503.385L518.117 505.723L517.567 501.247L513.007 499.968L507.857 501.491L501.844 504.863L497.311 510.562L491.618 511.662L487.703 513.631L481.013 518.542L477.115 517.625L473.977 508.219L475.346 496.822L476.785 490.522L476.242 488.861L471.033 489.214L472.066 483.115L470.602 479.808L466.719 477.113L463.421 476.172L458.406 479.14L454.634 485.415L450.768 489.064L451.461 495.347L447.529 498.154L445.542 496.885L439.545 497.034L437 498.017L435.232 501.705L435.52 506.297L432.669 508.673L426.867 503.491L421.319 505.086L415.94 507.973L409.859 512.456L407.77 511.927L403.98 507.146L405.031 499.605L410.24 491.22L414.172 486.446L414.917 481.478L411.314 477.954L409.479 470.982L411.398 465.578L410.544 463.829L402.408 462.684L401.258 459.209L396.174 456.952L397.638 451.437L403.22 447.588L410.038 449.005L417.394 449.684L419.738 447.259L420.743 442.212L425.126 440.504L423.899 436.948L421.006 433.652L426.698 432.656L431.968 433.532L433.421 430.039L431.552 424.05L435.512 418.262L441.203 421.776L452.241 415.881L455.091 412.554L460.986 419.703L460.241 421.475L453.965 426.887L459.117 433.188L464.927 432.247Z"
+                                fill="#C8C832" stroke="white" />
+                            <circle cx="425.734" cy="463.47" r="8" fill="black" class="ripple" />
+                            <rect width="65" height="19" transform="translate(394 474)" fill="white" />
+                            <path class="text"
+                                d="M398.073 488V478.758H400.682C401.486 478.758 402.197 478.936 402.814 479.291C403.432 479.646 403.908 480.152 404.243 480.808C404.581 481.464 404.753 482.217 404.757 483.068V483.658C404.757 484.53 404.588 485.294 404.249 485.95C403.915 486.606 403.434 487.109 402.808 487.46C402.186 487.812 401.46 487.992 400.631 488H398.073ZM399.292 479.761V487.003H400.574C401.513 487.003 402.243 486.711 402.764 486.127C403.288 485.543 403.551 484.712 403.551 483.633V483.093C403.551 482.044 403.303 481.229 402.808 480.649C402.317 480.065 401.619 479.769 400.713 479.761H399.292ZM410.66 487.321C410.203 487.858 409.532 488.127 408.648 488.127C407.916 488.127 407.357 487.915 406.972 487.492C406.591 487.065 406.399 486.434 406.395 485.601V481.132H407.569V485.569C407.569 486.61 407.992 487.13 408.838 487.13C409.736 487.13 410.332 486.796 410.628 486.127V481.132H411.803V488H410.686L410.66 487.321ZM417.592 486.178C417.592 485.861 417.471 485.615 417.23 485.442C416.993 485.264 416.576 485.112 415.979 484.985C415.387 484.858 414.915 484.706 414.564 484.528C414.217 484.35 413.959 484.139 413.79 483.893C413.625 483.648 413.542 483.356 413.542 483.017C413.542 482.454 413.779 481.978 414.253 481.589C414.731 481.2 415.34 481.005 416.081 481.005C416.86 481.005 417.49 481.206 417.973 481.608C418.459 482.01 418.703 482.524 418.703 483.15H417.522C417.522 482.829 417.384 482.552 417.109 482.319C416.839 482.086 416.496 481.97 416.081 481.97C415.654 481.97 415.319 482.063 415.078 482.249C414.837 482.435 414.716 482.679 414.716 482.979C414.716 483.263 414.828 483.476 415.053 483.62C415.277 483.764 415.681 483.902 416.265 484.033C416.853 484.164 417.329 484.32 417.693 484.502C418.057 484.684 418.326 484.904 418.5 485.163C418.677 485.417 418.766 485.728 418.766 486.096C418.766 486.709 418.521 487.202 418.03 487.575C417.539 487.943 416.902 488.127 416.119 488.127C415.569 488.127 415.082 488.03 414.659 487.835C414.236 487.64 413.904 487.369 413.663 487.022C413.426 486.671 413.307 486.292 413.307 485.886H414.481C414.503 486.28 414.659 486.593 414.951 486.826C415.247 487.054 415.637 487.168 416.119 487.168C416.563 487.168 416.919 487.08 417.186 486.902C417.456 486.72 417.592 486.479 417.592 486.178ZM421.47 481.963C421.991 481.324 422.668 481.005 423.501 481.005C424.953 481.005 425.685 481.824 425.698 483.461V488H424.523V483.455C424.519 482.96 424.405 482.594 424.181 482.357C423.961 482.12 423.616 482.001 423.146 482.001C422.765 482.001 422.431 482.103 422.143 482.306C421.855 482.509 421.631 482.776 421.47 483.106V488H420.296V478.25H421.47V481.963ZM431.696 488C431.629 487.865 431.574 487.623 431.531 487.276C430.985 487.843 430.334 488.127 429.576 488.127C428.899 488.127 428.343 487.937 427.907 487.556C427.475 487.171 427.259 486.684 427.259 486.096C427.259 485.381 427.53 484.826 428.072 484.433C428.618 484.035 429.384 483.836 430.37 483.836H431.512V483.296C431.512 482.886 431.389 482.56 431.144 482.319C430.899 482.073 430.537 481.951 430.059 481.951C429.64 481.951 429.288 482.056 429.005 482.268C428.721 482.48 428.58 482.736 428.58 483.036H427.399C427.399 482.693 427.52 482.363 427.761 482.046C428.006 481.724 428.336 481.47 428.751 481.284C429.17 481.098 429.629 481.005 430.128 481.005C430.92 481.005 431.54 481.204 431.988 481.602C432.437 481.995 432.67 482.539 432.687 483.233V486.394C432.687 487.025 432.767 487.526 432.928 487.898V488H431.696ZM429.748 487.105C430.116 487.105 430.465 487.01 430.795 486.819C431.125 486.629 431.364 486.381 431.512 486.077V484.667H430.592C429.153 484.667 428.434 485.089 428.434 485.931C428.434 486.299 428.556 486.587 428.802 486.794C429.047 487.001 429.362 487.105 429.748 487.105ZM435.638 481.132L435.676 481.995C436.201 481.335 436.887 481.005 437.733 481.005C439.184 481.005 439.917 481.824 439.929 483.461V488H438.755V483.455C438.751 482.96 438.636 482.594 438.412 482.357C438.192 482.12 437.847 482.001 437.377 482.001C436.997 482.001 436.662 482.103 436.375 482.306C436.087 482.509 435.862 482.776 435.702 483.106V488H434.527V481.132H435.638ZM447.515 484.642C447.515 485.692 447.273 486.536 446.791 487.175C446.309 487.81 445.661 488.127 444.849 488.127C443.981 488.127 443.31 487.82 442.836 487.207L442.779 488H441.7V478.25H442.875V481.887C443.348 481.299 444.002 481.005 444.836 481.005C445.67 481.005 446.323 481.32 446.797 481.951C447.276 482.581 447.515 483.444 447.515 484.541V484.642ZM446.34 484.509C446.34 483.709 446.186 483.091 445.877 482.655C445.568 482.219 445.124 482.001 444.544 482.001C443.77 482.001 443.213 482.361 442.875 483.081V486.051C443.234 486.771 443.795 487.13 444.557 487.13C445.119 487.13 445.557 486.912 445.871 486.477C446.184 486.041 446.34 485.385 446.34 484.509ZM451.85 488.127C450.919 488.127 450.162 487.822 449.578 487.213C448.994 486.599 448.702 485.78 448.702 484.756V484.541C448.702 483.859 448.831 483.252 449.089 482.719C449.351 482.181 449.715 481.762 450.181 481.462C450.65 481.157 451.158 481.005 451.704 481.005C452.597 481.005 453.291 481.299 453.786 481.887C454.281 482.475 454.529 483.318 454.529 484.414V484.902H449.876C449.893 485.579 450.09 486.127 450.466 486.546C450.847 486.961 451.33 487.168 451.914 487.168C452.328 487.168 452.68 487.084 452.967 486.915C453.255 486.745 453.507 486.521 453.723 486.242L454.44 486.8C453.864 487.685 453.001 488.127 451.85 488.127ZM451.704 481.97C451.23 481.97 450.832 482.143 450.511 482.49C450.189 482.833 449.99 483.315 449.914 483.938H453.354V483.849C453.321 483.252 453.16 482.791 452.872 482.465C452.584 482.135 452.195 481.97 451.704 481.97Z"
+                                fill="#222222" />
+                            <circle cx="434" cy="409.47" r="8" fill="black" class="ripple" />
+                            <rect width="59" height="19" transform="translate(405 419)" fill="white" />
+                            <path class="text"
+                                d="M415.458 424.761H412.488V433H411.275V424.761H408.311V423.758H415.458V424.761ZM420.162 433C420.094 432.865 420.039 432.623 419.997 432.276C419.451 432.843 418.799 433.127 418.042 433.127C417.365 433.127 416.808 432.937 416.373 432.556C415.941 432.171 415.725 431.684 415.725 431.096C415.725 430.381 415.996 429.826 416.538 429.433C417.083 429.035 417.849 428.836 418.835 428.836H419.978V428.296C419.978 427.886 419.855 427.56 419.61 427.319C419.364 427.073 419.003 426.951 418.524 426.951C418.105 426.951 417.754 427.056 417.471 427.268C417.187 427.48 417.045 427.736 417.045 428.036H415.865C415.865 427.693 415.985 427.363 416.227 427.046C416.472 426.724 416.802 426.47 417.217 426.284C417.636 426.098 418.095 426.005 418.594 426.005C419.386 426.005 420.006 426.204 420.454 426.602C420.903 426.995 421.135 427.539 421.152 428.233V431.394C421.152 432.025 421.233 432.526 421.394 432.898V433H420.162ZM418.213 432.105C418.582 432.105 418.931 432.01 419.261 431.819C419.591 431.629 419.83 431.381 419.978 431.077V429.667H419.058C417.619 429.667 416.899 430.089 416.899 430.931C416.899 431.299 417.022 431.587 417.268 431.794C417.513 432.001 417.828 432.105 418.213 432.105ZM426.992 431.178C426.992 430.861 426.872 430.615 426.63 430.442C426.393 430.264 425.977 430.112 425.38 429.985C424.787 429.858 424.316 429.706 423.964 429.528C423.617 429.35 423.359 429.139 423.19 428.893C423.025 428.648 422.942 428.356 422.942 428.017C422.942 427.454 423.179 426.978 423.653 426.589C424.132 426.2 424.741 426.005 425.481 426.005C426.26 426.005 426.891 426.206 427.373 426.608C427.86 427.01 428.103 427.524 428.103 428.15H426.922C426.922 427.829 426.785 427.552 426.51 427.319C426.239 427.086 425.896 426.97 425.481 426.97C425.054 426.97 424.72 427.063 424.479 427.249C424.237 427.435 424.117 427.679 424.117 427.979C424.117 428.263 424.229 428.476 424.453 428.62C424.677 428.764 425.082 428.902 425.666 429.033C426.254 429.164 426.73 429.32 427.094 429.502C427.458 429.684 427.726 429.904 427.9 430.163C428.078 430.417 428.167 430.728 428.167 431.096C428.167 431.709 427.921 432.202 427.43 432.575C426.939 432.943 426.302 433.127 425.52 433.127C424.969 433.127 424.483 433.03 424.06 432.835C423.636 432.64 423.304 432.369 423.063 432.022C422.826 431.671 422.708 431.292 422.708 430.886H423.882C423.903 431.28 424.06 431.593 424.352 431.826C424.648 432.054 425.037 432.168 425.52 432.168C425.964 432.168 426.319 432.08 426.586 431.902C426.857 431.72 426.992 431.479 426.992 431.178ZM430.871 426.963C431.391 426.324 432.068 426.005 432.902 426.005C434.353 426.005 435.085 426.824 435.098 428.461V433H433.924V428.455C433.92 427.96 433.805 427.594 433.581 427.357C433.361 427.12 433.016 427.001 432.546 427.001C432.166 427.001 431.831 427.103 431.543 427.306C431.256 427.509 431.031 427.776 430.871 428.106V433H429.696V423.25H430.871V426.963ZM438.773 429.82L438.037 430.588V433H436.863V423.25H438.037V429.147L438.666 428.392L440.805 426.132H442.233L439.561 429.001L442.544 433H441.167L438.773 429.82ZM446.168 433.127C445.237 433.127 444.48 432.822 443.896 432.213C443.312 431.599 443.02 430.78 443.02 429.756V429.541C443.02 428.859 443.149 428.252 443.407 427.719C443.67 427.181 444.034 426.762 444.499 426.462C444.969 426.157 445.477 426.005 446.022 426.005C446.915 426.005 447.609 426.299 448.104 426.887C448.6 427.475 448.847 428.318 448.847 429.414V429.902H444.194C444.211 430.579 444.408 431.127 444.785 431.546C445.166 431.961 445.648 432.168 446.232 432.168C446.647 432.168 446.998 432.084 447.286 431.915C447.573 431.745 447.825 431.521 448.041 431.242L448.758 431.8C448.183 432.685 447.319 433.127 446.168 433.127ZM446.022 426.97C445.549 426.97 445.151 427.143 444.829 427.49C444.507 427.833 444.309 428.315 444.232 428.938H447.673V428.849C447.639 428.252 447.478 427.791 447.19 427.465C446.903 427.135 446.513 426.97 446.022 426.97ZM451.323 426.132L451.361 426.995C451.886 426.335 452.571 426.005 453.417 426.005C454.869 426.005 455.601 426.824 455.614 428.461V433H454.439V428.455C454.435 427.96 454.321 427.594 454.097 427.357C453.877 427.12 453.532 427.001 453.062 427.001C452.681 427.001 452.347 427.103 452.059 427.306C451.771 427.509 451.547 427.776 451.386 428.106V433H450.212V426.132H451.323ZM458.978 424.469V426.132H460.26V427.04H458.978V431.299C458.978 431.574 459.035 431.781 459.149 431.921C459.264 432.056 459.458 432.124 459.733 432.124C459.869 432.124 460.055 432.099 460.292 432.048V433C459.983 433.085 459.683 433.127 459.391 433.127C458.866 433.127 458.47 432.968 458.204 432.651C457.937 432.333 457.804 431.883 457.804 431.299V427.04H456.553V426.132H457.804V424.469H458.978Z"
+                                fill="#222222" />
+                            <circle cx="538.734" cy="374.47" r="8" fill="black" class="ripple" />
+                            <rect width="52" height="19" transform="translate(513 384)" fill="white" />
+                            <path class="text"
+                                d="M517.073 398V388.758H520.094C521.097 388.758 521.85 388.965 522.354 389.38C522.862 389.795 523.116 390.408 523.116 391.221C523.116 391.652 522.993 392.035 522.748 392.37C522.502 392.7 522.168 392.956 521.745 393.138C522.244 393.277 522.638 393.544 522.925 393.938C523.217 394.327 523.363 394.792 523.363 395.334C523.363 396.163 523.095 396.815 522.557 397.289C522.02 397.763 521.26 398 520.278 398H517.073ZM518.292 393.677V397.003H520.304C520.871 397.003 521.317 396.857 521.643 396.565C521.973 396.269 522.138 395.863 522.138 395.347C522.138 394.234 521.533 393.677 520.323 393.677H518.292ZM518.292 392.7H520.132C520.666 392.7 521.091 392.566 521.408 392.3C521.73 392.033 521.891 391.671 521.891 391.214C521.891 390.707 521.743 390.338 521.446 390.11C521.15 389.877 520.699 389.761 520.094 389.761H518.292V392.7ZM526.264 398H525.09V391.132H526.264V398ZM524.995 389.31C524.995 389.12 525.052 388.959 525.166 388.828C525.285 388.696 525.458 388.631 525.687 388.631C525.915 388.631 526.089 388.696 526.207 388.828C526.326 388.959 526.385 389.12 526.385 389.31C526.385 389.5 526.326 389.659 526.207 389.786C526.089 389.913 525.915 389.977 525.687 389.977C525.458 389.977 525.285 389.913 525.166 389.786C525.052 389.659 524.995 389.5 524.995 389.31ZM532.148 396.178C532.148 395.861 532.028 395.615 531.787 395.442C531.55 395.264 531.133 395.112 530.536 394.985C529.944 394.858 529.472 394.706 529.121 394.528C528.774 394.35 528.515 394.139 528.346 393.893C528.181 393.648 528.099 393.356 528.099 393.017C528.099 392.454 528.336 391.978 528.81 391.589C529.288 391.2 529.897 391.005 530.638 391.005C531.416 391.005 532.047 391.206 532.529 391.608C533.016 392.01 533.259 392.524 533.259 393.15H532.079C532.079 392.829 531.941 392.552 531.666 392.319C531.395 392.086 531.052 391.97 530.638 391.97C530.21 391.97 529.876 392.063 529.635 392.249C529.394 392.435 529.273 392.679 529.273 392.979C529.273 393.263 529.385 393.476 529.609 393.62C529.834 393.764 530.238 393.902 530.822 394.033C531.41 394.164 531.886 394.32 532.25 394.502C532.614 394.684 532.883 394.904 533.056 395.163C533.234 395.417 533.323 395.728 533.323 396.096C533.323 396.709 533.077 397.202 532.586 397.575C532.096 397.943 531.459 398.127 530.676 398.127C530.126 398.127 529.639 398.03 529.216 397.835C528.793 397.64 528.46 397.369 528.219 397.022C527.982 396.671 527.864 396.292 527.864 395.886H529.038C529.059 396.28 529.216 396.593 529.508 396.826C529.804 397.054 530.193 397.168 530.676 397.168C531.12 397.168 531.476 397.08 531.742 396.902C532.013 396.72 532.148 396.479 532.148 396.178ZM536.027 391.963C536.547 391.324 537.224 391.005 538.058 391.005C539.51 391.005 540.242 391.824 540.254 393.461V398H539.08V393.455C539.076 392.96 538.962 392.594 538.737 392.357C538.517 392.12 538.172 392.001 537.703 392.001C537.322 392.001 536.987 392.103 536.7 392.306C536.412 392.509 536.188 392.776 536.027 393.106V398H534.853V388.25H536.027V391.963ZM543.93 394.82L543.193 395.588V398H542.019V388.25H543.193V394.147L543.822 393.392L545.961 391.132H547.389L544.717 394.001L547.7 398H546.323L543.93 394.82ZM551.325 398.127C550.394 398.127 549.636 397.822 549.052 397.213C548.468 396.599 548.176 395.78 548.176 394.756V394.541C548.176 393.859 548.305 393.252 548.563 392.719C548.826 392.181 549.19 391.762 549.655 391.462C550.125 391.157 550.633 391.005 551.179 391.005C552.072 391.005 552.766 391.299 553.261 391.887C553.756 392.475 554.003 393.318 554.003 394.414V394.902H549.351C549.368 395.579 549.564 396.127 549.941 396.546C550.322 396.961 550.804 397.168 551.388 397.168C551.803 397.168 552.154 397.084 552.442 396.915C552.73 396.745 552.981 396.521 553.197 396.242L553.915 396.8C553.339 397.685 552.476 398.127 551.325 398.127ZM551.179 391.97C550.705 391.97 550.307 392.143 549.985 392.49C549.664 392.833 549.465 393.315 549.389 393.938H552.829V393.849C552.795 393.252 552.634 392.791 552.347 392.465C552.059 392.135 551.67 391.97 551.179 391.97ZM557.285 394.82L556.549 395.588V398H555.375V388.25H556.549V394.147L557.177 393.392L559.316 391.132H560.745L558.072 394.001L561.056 398H559.678L557.285 394.82Z"
+                                fill="#222222" />
+                            <circle cx="219.734" cy="475.47" r="8" fill="black" class="ripple" />
+                            <rect width="62" height="19" transform="translate(189 486)" fill="white" />
+                            <path class="text"
+                                d="M198.176 497.588H194.304L193.435 500H192.178L195.707 490.758H196.773L200.309 500H199.059L198.176 497.588ZM194.672 496.585H197.814L196.24 492.262L194.672 496.585ZM205.368 498.178C205.368 497.861 205.248 497.615 205.006 497.442C204.769 497.264 204.353 497.112 203.756 496.985C203.163 496.858 202.692 496.706 202.34 496.528C201.993 496.35 201.735 496.139 201.566 495.893C201.401 495.648 201.318 495.356 201.318 495.017C201.318 494.454 201.555 493.978 202.029 493.589C202.507 493.2 203.117 493.005 203.857 493.005C204.636 493.005 205.267 493.206 205.749 493.608C206.236 494.01 206.479 494.524 206.479 495.15H205.298C205.298 494.829 205.161 494.552 204.886 494.319C204.615 494.086 204.272 493.97 203.857 493.97C203.43 493.97 203.096 494.063 202.854 494.249C202.613 494.435 202.493 494.679 202.493 494.979C202.493 495.263 202.605 495.476 202.829 495.62C203.053 495.764 203.458 495.902 204.042 496.033C204.63 496.164 205.106 496.32 205.47 496.502C205.834 496.684 206.102 496.904 206.276 497.163C206.454 497.417 206.542 497.728 206.542 498.096C206.542 498.709 206.297 499.202 205.806 499.575C205.315 499.943 204.678 500.127 203.896 500.127C203.345 500.127 202.859 500.03 202.436 499.835C202.012 499.64 201.68 499.369 201.439 499.022C201.202 498.671 201.083 498.292 201.083 497.886H202.258C202.279 498.28 202.436 498.593 202.728 498.826C203.024 499.054 203.413 499.168 203.896 499.168C204.34 499.168 204.695 499.08 204.962 498.902C205.233 498.72 205.368 498.479 205.368 498.178ZM209.247 493.963C209.767 493.324 210.444 493.005 211.278 493.005C212.729 493.005 213.461 493.824 213.474 495.461V500H212.3V495.455C212.296 494.96 212.181 494.594 211.957 494.357C211.737 494.12 211.392 494.001 210.922 494.001C210.542 494.001 210.207 494.103 209.919 494.306C209.632 494.509 209.407 494.776 209.247 495.106V500H208.072V490.25H209.247V493.963ZM214.953 496.509C214.953 495.438 215.201 494.588 215.696 493.957C216.191 493.322 216.847 493.005 217.664 493.005C218.501 493.005 219.155 493.301 219.625 493.894L219.682 493.132H220.755V499.835C220.755 500.724 220.49 501.424 219.961 501.936C219.437 502.448 218.73 502.704 217.841 502.704C217.346 502.704 216.862 502.598 216.388 502.387C215.914 502.175 215.552 501.885 215.302 501.517L215.912 500.812C216.415 501.435 217.031 501.746 217.759 501.746C218.33 501.746 218.774 501.585 219.092 501.263C219.413 500.942 219.574 500.489 219.574 499.905V499.314C219.104 499.856 218.463 500.127 217.651 500.127C216.847 500.127 216.195 499.803 215.696 499.156C215.201 498.508 214.953 497.626 214.953 496.509ZM216.134 496.642C216.134 497.417 216.292 498.026 216.61 498.47C216.927 498.91 217.372 499.13 217.943 499.13C218.683 499.13 219.227 498.794 219.574 498.121V494.985C219.215 494.329 218.675 494.001 217.956 494.001C217.384 494.001 216.938 494.224 216.616 494.668C216.295 495.112 216.134 495.77 216.134 496.642ZM226.772 500C226.705 499.865 226.65 499.623 226.607 499.276C226.062 499.843 225.41 500.127 224.652 500.127C223.975 500.127 223.419 499.937 222.983 499.556C222.551 499.171 222.335 498.684 222.335 498.096C222.335 497.381 222.606 496.826 223.148 496.433C223.694 496.035 224.46 495.836 225.446 495.836H226.588V495.296C226.588 494.886 226.466 494.56 226.22 494.319C225.975 494.073 225.613 493.951 225.135 493.951C224.716 493.951 224.365 494.056 224.081 494.268C223.798 494.48 223.656 494.736 223.656 495.036H222.475C222.475 494.693 222.596 494.363 222.837 494.046C223.082 493.724 223.412 493.47 223.827 493.284C224.246 493.098 224.705 493.005 225.205 493.005C225.996 493.005 226.616 493.204 227.064 493.602C227.513 493.995 227.746 494.539 227.763 495.233V498.394C227.763 499.025 227.843 499.526 228.004 499.898V500H226.772ZM224.824 499.105C225.192 499.105 225.541 499.01 225.871 498.819C226.201 498.629 226.44 498.381 226.588 498.077V496.667H225.668C224.229 496.667 223.51 497.089 223.51 497.931C223.51 498.299 223.632 498.587 223.878 498.794C224.123 499.001 224.439 499.105 224.824 499.105ZM235.418 496.642C235.418 497.692 235.177 498.536 234.694 499.175C234.212 499.81 233.564 500.127 232.752 500.127C231.884 500.127 231.214 499.82 230.74 499.207L230.683 500H229.604V490.25H230.778V493.887C231.252 493.299 231.906 493.005 232.739 493.005C233.573 493.005 234.227 493.32 234.701 493.951C235.179 494.581 235.418 495.444 235.418 496.541V496.642ZM234.244 496.509C234.244 495.709 234.089 495.091 233.78 494.655C233.471 494.219 233.027 494.001 232.447 494.001C231.673 494.001 231.116 494.361 230.778 495.081V498.051C231.138 498.771 231.698 499.13 232.46 499.13C233.023 499.13 233.461 498.912 233.774 498.477C234.087 498.041 234.244 497.385 234.244 496.509ZM241.144 500C241.076 499.865 241.021 499.623 240.979 499.276C240.433 499.843 239.781 500.127 239.023 500.127C238.346 500.127 237.79 499.937 237.354 499.556C236.922 499.171 236.707 498.684 236.707 498.096C236.707 497.381 236.977 496.826 237.519 496.433C238.065 496.035 238.831 495.836 239.817 495.836H240.959V495.296C240.959 494.886 240.837 494.56 240.591 494.319C240.346 494.073 239.984 493.951 239.506 493.951C239.087 493.951 238.736 494.056 238.452 494.268C238.169 494.48 238.027 494.736 238.027 495.036H236.846C236.846 494.693 236.967 494.363 237.208 494.046C237.453 493.724 237.784 493.47 238.198 493.284C238.617 493.098 239.076 493.005 239.576 493.005C240.367 493.005 240.987 493.204 241.436 493.602C241.884 493.995 242.117 494.539 242.134 495.233V498.394C242.134 499.025 242.214 499.526 242.375 499.898V500H241.144ZM239.195 499.105C239.563 499.105 239.912 499.01 240.242 498.819C240.572 498.629 240.811 498.381 240.959 498.077V496.667H240.039C238.6 496.667 237.881 497.089 237.881 497.931C237.881 498.299 238.004 498.587 238.249 498.794C238.494 499.001 238.81 499.105 239.195 499.105ZM245.568 491.469V493.132H246.85V494.04H245.568V498.299C245.568 498.574 245.625 498.781 245.739 498.921C245.854 499.056 246.048 499.124 246.323 499.124C246.459 499.124 246.645 499.099 246.882 499.048V500C246.573 500.085 246.272 500.127 245.98 500.127C245.456 500.127 245.06 499.968 244.793 499.651C244.527 499.333 244.394 498.883 244.394 498.299V494.04H243.143V493.132H244.394V491.469H245.568Z"
+                                fill="#222222" />
+                            <circle cx="475.734" cy="152.47" r="8" fill="black" class="ripple" />
+                            <rect width="67" height="19" transform="translate(443 164)" fill="white" />
+                            <path class="text"
+                                d="M454.176 178H452.951L448.298 170.878V178H447.073V168.758H448.298L452.963 175.912V168.758H454.176V178ZM460.396 177.321C459.939 177.858 459.269 178.127 458.384 178.127C457.652 178.127 457.094 177.915 456.708 177.492C456.328 177.065 456.135 176.434 456.131 175.601V171.132H457.305V175.569C457.305 176.61 457.728 177.13 458.575 177.13C459.472 177.13 460.069 176.796 460.365 176.127V171.132H461.539V178H460.422L460.396 177.321ZM466.649 172.186C466.471 172.156 466.279 172.141 466.071 172.141C465.301 172.141 464.778 172.469 464.503 173.125V178H463.329V171.132H464.472L464.491 171.925C464.876 171.312 465.422 171.005 466.128 171.005C466.357 171.005 466.53 171.035 466.649 171.094V172.186ZM470.178 174.553H467.081V173.595H470.178V174.553ZM474.234 173.88C473.189 173.58 472.427 173.212 471.949 172.776C471.475 172.336 471.238 171.794 471.238 171.151C471.238 170.423 471.528 169.822 472.108 169.348C472.692 168.87 473.449 168.631 474.38 168.631C475.015 168.631 475.58 168.754 476.075 168.999C476.575 169.244 476.96 169.583 477.23 170.015C477.506 170.446 477.643 170.918 477.643 171.43H476.418C476.418 170.872 476.24 170.434 475.885 170.116C475.529 169.795 475.028 169.634 474.38 169.634C473.779 169.634 473.31 169.767 472.971 170.034C472.637 170.296 472.47 170.662 472.47 171.132C472.47 171.508 472.628 171.828 472.946 172.09C473.267 172.348 473.811 172.585 474.577 172.801C475.347 173.017 475.948 173.256 476.38 173.519C476.816 173.777 477.137 174.079 477.345 174.426C477.556 174.773 477.662 175.182 477.662 175.651C477.662 176.4 477.37 177.001 476.786 177.454C476.202 177.903 475.421 178.127 474.444 178.127C473.809 178.127 473.217 178.006 472.667 177.765C472.116 177.52 471.691 177.185 471.391 176.762C471.094 176.339 470.946 175.859 470.946 175.321H472.171C472.171 175.88 472.377 176.322 472.787 176.648C473.202 176.97 473.754 177.13 474.444 177.13C475.087 177.13 475.58 176.999 475.923 176.737C476.266 176.474 476.437 176.117 476.437 175.664C476.437 175.211 476.278 174.862 475.961 174.617C475.644 174.367 475.068 174.122 474.234 173.88ZM483.286 177.321C482.829 177.858 482.158 178.127 481.274 178.127C480.542 178.127 479.983 177.915 479.598 177.492C479.217 177.065 479.025 176.434 479.021 175.601V171.132H480.195V175.569C480.195 176.61 480.618 177.13 481.464 177.13C482.361 177.13 482.958 176.796 483.254 176.127V171.132H484.429V178H483.312L483.286 177.321ZM487.495 178H486.32V168.25H487.495V178ZM490.973 169.469V171.132H492.255V172.04H490.973V176.299C490.973 176.574 491.03 176.781 491.145 176.921C491.259 177.056 491.453 177.124 491.729 177.124C491.864 177.124 492.05 177.099 492.287 177.048V178C491.978 178.085 491.678 178.127 491.386 178.127C490.861 178.127 490.465 177.968 490.199 177.651C489.932 177.333 489.799 176.883 489.799 176.299V172.04H488.548V171.132H489.799V169.469H490.973ZM497.873 178C497.805 177.865 497.75 177.623 497.708 177.276C497.162 177.843 496.51 178.127 495.753 178.127C495.076 178.127 494.519 177.937 494.083 177.556C493.652 177.171 493.436 176.684 493.436 176.096C493.436 175.381 493.707 174.826 494.249 174.433C494.794 174.035 495.56 173.836 496.546 173.836H497.689V173.296C497.689 172.886 497.566 172.56 497.321 172.319C497.075 172.073 496.714 171.951 496.235 171.951C495.816 171.951 495.465 172.056 495.182 172.268C494.898 172.48 494.756 172.736 494.756 173.036H493.576C493.576 172.693 493.696 172.363 493.938 172.046C494.183 171.724 494.513 171.47 494.928 171.284C495.347 171.098 495.806 171.005 496.305 171.005C497.097 171.005 497.716 171.204 498.165 171.602C498.614 171.995 498.846 172.539 498.863 173.233V176.394C498.863 177.025 498.944 177.526 499.104 177.898V178H497.873ZM495.924 177.105C496.292 177.105 496.642 177.01 496.972 176.819C497.302 176.629 497.541 176.381 497.689 176.077V174.667H496.769C495.33 174.667 494.61 175.089 494.61 175.931C494.61 176.299 494.733 176.587 494.979 176.794C495.224 177.001 495.539 177.105 495.924 177.105ZM501.815 171.132L501.853 171.995C502.378 171.335 503.063 171.005 503.91 171.005C505.361 171.005 506.093 171.824 506.106 173.461V178H504.932V173.455C504.927 172.96 504.813 172.594 504.589 172.357C504.369 172.12 504.024 172.001 503.554 172.001C503.173 172.001 502.839 172.103 502.551 172.306C502.264 172.509 502.039 172.776 501.878 173.106V178H500.704V171.132H501.815Z"
+                                fill="#222222" />
+                        </svg>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="map-info mt-lg-4 mt-2">
+                            <h3 class="big-title mb-4" id="map-title" data-default="Central Asia">Central Asia</h3>
+                            <div class="row">
+                                <div class="inner-info col-md-12 col-6">
+                                    <p class="m-0 subtitle">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M10 20L3 24V8L10 4M10 20L18 24M10 20V4M18 24L25 20V4L18 8M18 24V8M18 8L10 4"
+                                                stroke="#1D3B70" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        <span>Total area</span>
+                                    </p>
+                                    <p id="area-data" data-default="4,000,037 sq. km">4,000,037 sq. km</p>
+                                </div>
+                                <div class="inner-info col-md-12 col-6">
+                                    <p class="m-0 subtitle">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M19 23V21C19 19.9391 18.5786 18.9217 17.8284 18.1716C17.0783 17.4214 16.0609 17 15 17H7C5.93913 17 4.92172 17.4214 4.17157 18.1716C3.42143 18.9217 3 19.9391 3 21V23M25 23V21C24.9993 20.1137 24.7044 19.2528 24.1614 18.5523C23.6184 17.8519 22.8581 17.3516 22 17.13M18 5.13C18.8604 5.3503 19.623 5.8507 20.1676 6.55231C20.7122 7.25392 21.0078 8.11683 21.0078 9.005C21.0078 9.89317 20.7122 10.7561 20.1676 11.4577C19.623 12.1593 18.8604 12.6597 18 12.88M15 9C15 11.2091 13.2091 13 11 13C8.79086 13 7 11.2091 7 9C7 6.79086 8.79086 5 11 5C13.2091 5 15 6.79086 15 9Z"
+                                                stroke="#1D3B70" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+
+                                        <span>Total Population</span>
+                                    </p>
+                                    <p id="population-data" data-default="73,3 Million">73,3 Million</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="inner-info col-md-12 col-6">
+                                    <p class="m-0 subtitle">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M24 5.7371C24 6.79642 20.9492 7.64388 17.178 7.64388C13.4068 7.64388 10.356 6.79642 10.356 5.7371C10.356 4.67778 13.4068 3.83032 17.178 3.83032C20.9492 3.83032 24 4.67778 24 5.7371Z"
+                                                stroke="#1D3B70" stroke-width="2" stroke-miterlimit="10"
+                                                stroke-linecap="round" />
+                                            <path
+                                                d="M24 9.12695C24 10.1863 20.9491 11.0337 17.1779 11.0337C16.4576 11.0337 15.7796 10.9914 15.1017 10.949C15.0169 10.949 10.9491 10.4405 10.9067 10.3981"
+                                                stroke="#1D3B70" stroke-width="2" stroke-miterlimit="10"
+                                                stroke-linecap="round" />
+                                            <path d="M24.0001 12.8135C24.0001 13.8304 21.1188 14.6779 17.5171 14.7203"
+                                                stroke="#1D3B70" stroke-width="2" stroke-miterlimit="10"
+                                                stroke-linecap="round" />
+                                            <path d="M23.9999 16.4998C23.9999 17.5167 21.1609 18.3218 17.6016 18.4065"
+                                                stroke="#1D3B70" stroke-width="2" stroke-miterlimit="10"
+                                                stroke-linecap="round" />
+                                            <path d="M10.356 6.33032V10.6524" stroke="#1D3B70" stroke-width="2"
+                                                stroke-miterlimit="10" stroke-linecap="round" />
+                                            <path d="M24 6.33032V16.4574" stroke="#1D3B70" stroke-width="2"
+                                                stroke-miterlimit="10" stroke-linecap="round" />
+                                            <path
+                                                d="M17.4322 17.4324C17.4322 21.1612 14.4237 24.1696 10.6949 24.1696C7.00847 24.1696 4 21.1612 4 17.4324C4 13.7035 7.00847 10.6951 10.7373 10.6951C14.4237 10.7374 17.4322 13.7459 17.4322 17.4324Z"
+                                                stroke="#1D3B70" stroke-width="2" stroke-miterlimit="10"
+                                                stroke-linecap="round" />
+                                            <mask id="path-8-inside-1" fill="white">
+                                                <path
+                                                    d="M10.3558 21.7964V20.7371C9.76255 20.7371 9.12696 20.5252 8.74561 20.271L8.99984 19.5506C9.3812 19.8049 9.93205 20.0168 10.5253 20.0168C11.288 20.0168 11.7965 19.593 11.7965 18.9998C11.7965 18.4066 11.3727 18.0676 10.61 17.7286C9.50832 17.3049 8.87272 16.8388 8.87272 15.9066C8.87272 15.0168 9.50832 14.3812 10.4829 14.2117V13.1523H11.1185V14.1693C11.7541 14.1693 12.1778 14.3388 12.4744 14.5506L12.2202 15.2286C12.0083 15.1015 11.5846 14.8896 10.9066 14.8896C10.1015 14.8896 9.80493 15.3557 9.80493 15.7795C9.80493 16.3303 10.1863 16.5845 11.1185 16.9659C12.2202 17.432 12.771 17.9405 12.771 18.9151C12.771 19.7625 12.1778 20.5252 11.1185 20.6947V21.7964H10.3558Z" />
+                                            </mask>
+                                            <path
+                                                d="M10.3558 21.7964H8.35577V23.7964H10.3558V21.7964ZM10.3558 20.7371H12.3558V18.7371H10.3558V20.7371ZM8.74561 20.271L6.85962 19.6053L6.3419 21.0722L7.63621 21.9351L8.74561 20.271ZM8.99984 19.5506L10.1092 17.8865L7.96969 16.4602L7.11386 18.885L8.99984 19.5506ZM10.61 17.7286L11.4223 15.901L11.3756 15.8803L11.328 15.8619L10.61 17.7286ZM10.4829 14.2117L10.8256 16.1821L12.4829 15.8939V14.2117H10.4829ZM10.4829 13.1523V11.1523H8.48289V13.1523H10.4829ZM11.1185 13.1523H13.1185V11.1523H11.1185V13.1523ZM11.1185 14.1693H9.11849V16.1693H11.1185V14.1693ZM12.4744 14.5506L14.3471 15.2529L14.8861 13.8155L13.6369 12.9232L12.4744 14.5506ZM12.2202 15.2286L11.1912 16.9436L13.2499 18.1788L14.0928 15.9309L12.2202 15.2286ZM11.1185 16.9659L11.8978 15.124L11.8868 15.1193L11.8758 15.1148L11.1185 16.9659ZM11.1185 20.6947L10.8025 18.7198L9.11849 18.9893V20.6947H11.1185ZM11.1185 21.7964V23.7964H13.1185V21.7964H11.1185ZM12.3558 21.7964V20.7371H8.35577V21.7964H12.3558ZM10.3558 18.7371C10.2862 18.7371 10.1749 18.7227 10.0493 18.6847C9.91814 18.6451 9.85117 18.6043 9.85501 18.6069L7.63621 21.9351C8.34798 22.4096 9.36997 22.7371 10.3558 22.7371V18.7371ZM10.6316 20.9366L10.8858 20.2163L7.11386 18.885L6.85962 19.6053L10.6316 20.9366ZM7.89044 21.2147C8.54844 21.6534 9.47913 22.0168 10.5253 22.0168V18.0168C10.4647 18.0168 10.3885 18.0054 10.3039 17.9778C10.2178 17.9497 10.1491 17.9131 10.1092 17.8865L7.89044 21.2147ZM10.5253 22.0168C11.264 22.0168 12.0557 21.8111 12.7053 21.2852C13.3841 20.7357 13.7965 19.9162 13.7965 18.9998H9.79645C9.79645 18.6767 9.95462 18.3656 10.1885 18.1762C10.3932 18.0105 10.5492 18.0168 10.5253 18.0168V22.0168ZM13.7965 18.9998C13.7965 18.1381 13.4546 17.4057 12.9035 16.8547C12.4338 16.385 11.8594 16.0953 11.4223 15.901L9.79774 19.5562C9.94309 19.6208 10.0319 19.6678 10.0836 19.6991C10.1359 19.7306 10.12 19.7281 10.075 19.6831C10.0239 19.632 9.94321 19.5338 9.88004 19.3864C9.81568 19.2362 9.79645 19.0977 9.79645 18.9998H13.7965ZM11.328 15.8619C11.1014 15.7748 10.9449 15.7028 10.8368 15.6434C10.7287 15.584 10.703 15.5556 10.7165 15.5686C10.7378 15.5891 10.7902 15.6488 10.831 15.7452C10.8714 15.8408 10.8727 15.9067 10.8727 15.9066H6.87272C6.87272 16.9119 7.24972 17.7824 7.93996 18.448C8.53578 19.0225 9.28228 19.3608 9.89205 19.5953L11.328 15.8619ZM10.8727 15.9066C10.8727 15.9254 10.8687 15.9717 10.8447 16.0318C10.8206 16.092 10.7862 16.1418 10.7525 16.1768C10.6856 16.2462 10.6746 16.2083 10.8256 16.1821L10.1402 12.2412C8.4488 12.5354 6.87272 13.8186 6.87272 15.9066H10.8727ZM12.4829 14.2117V13.1523H8.48289V14.2117H12.4829ZM10.4829 15.1523H11.1185V11.1523H10.4829V15.1523ZM9.11849 13.1523V14.1693H13.1185V13.1523H9.11849ZM11.1185 16.1693C11.2565 16.1693 11.3201 16.1873 11.3322 16.1911C11.3416 16.194 11.33 16.191 11.3119 16.1781L13.6369 12.9232C12.9788 12.4531 12.1426 12.1693 11.1185 12.1693V16.1693ZM10.6018 13.8484L10.3475 14.5264L14.0928 15.9309L14.3471 15.2529L10.6018 13.8484ZM13.2492 13.5136C12.8197 13.2559 12.0422 12.8896 10.9066 12.8896V16.8896C11.0323 16.8896 11.1041 16.9085 11.1337 16.9179C11.1631 16.9272 11.1781 16.9358 11.1912 16.9436L13.2492 13.5136ZM10.9066 12.8896C10.1123 12.8896 9.29227 13.1283 8.66158 13.7398C8.04275 14.3399 7.80493 15.1092 7.80493 15.7795H11.8049C11.8049 16.026 11.7154 16.3504 11.4462 16.6114C11.165 16.884 10.8959 16.8896 10.9066 16.8896V12.8896ZM7.80493 15.7795C7.80493 16.6577 8.1703 17.4106 8.81683 17.9601C9.3021 18.3726 9.91333 18.6338 10.3612 18.817L11.8758 15.1148C11.6631 15.0278 11.5269 14.9661 11.4369 14.9197C11.3436 14.8716 11.3542 14.8671 11.4074 14.9124C11.4728 14.9679 11.5949 15.092 11.6897 15.2942C11.7855 15.4984 11.8049 15.6786 11.8049 15.7795H7.80493ZM10.3392 18.8078C10.555 18.8991 10.6953 18.9724 10.7854 19.0285C10.8737 19.0834 10.887 19.1053 10.8688 19.0849C10.8437 19.057 10.8084 19.0049 10.7851 18.94C10.7638 18.8807 10.771 18.8614 10.771 18.9151H14.771C14.771 17.997 14.4905 17.1325 13.847 16.4147C13.2755 15.7772 12.5364 15.3941 11.8978 15.124L10.3392 18.8078ZM10.771 18.9151C10.771 18.8927 10.7751 18.8621 10.7881 18.8274C10.8012 18.7923 10.8206 18.7605 10.8431 18.7351C10.8658 18.7094 10.8839 18.6988 10.886 18.6977C10.8878 18.6967 10.864 18.71 10.8025 18.7198L11.4345 22.6696C13.403 22.3546 14.771 20.8057 14.771 18.9151H10.771ZM9.11849 20.6947V21.7964H13.1185V20.6947H9.11849ZM11.1185 19.7964H10.3558V23.7964H11.1185V19.7964Z"
+                                                fill="#1D3B70" mask="url(#path-8-inside-1)" />
+                                        </svg>
+                                        <span>Overall GDP</span>
+                                    </p>
+                                    <p id="overall-gdp" data-default="$361.0 Billion">$361.0 Billion</p>
+                                </div>
+
+                                <div class="inner-info col-md-12 col-6">
+                                    <p class="m-0 subtitle">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M21 7L7 21M11 8.5C11 9.88071 9.88071 11 8.5 11C7.11929 11 6 9.88071 6 8.5C6 7.11929 7.11929 6 8.5 6C9.88071 6 11 7.11929 11 8.5ZM22 19.5C22 20.8807 20.8807 22 19.5 22C18.1193 22 17 20.8807 17 19.5C17 18.1193 18.1193 17 19.5 17C20.8807 17 22 18.1193 22 19.5Z"
+                                                stroke="#1D3B70" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        <span>GDP Per Capita</span>
+                                    </p>
+                                    <p id="percapita-gdp" data-default="$4890.7">$4890.7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{% static 'images/logo.png'%}" class="footer-logo" alt="footer-logo">
+                    <h5 class="bold my-4">Royal Consulting Inc.</h5>
+                    <p class="bold">
+                        © 2021 Official website of Royal Consulting Inc.
+                        All rights reserved.
+                    </p>
+                    <p class="bold">
+                        Note: If you find an error in the text,
+                        select it and press Ctrl + Enter to notify us.
+                    </p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="container-fluid d-flex h-100 justify-content-between flex-column">
+                        <div class="row footer-address pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    Richmond Office (USA)
+                                </h5>
+                                <p class="mt-3">
+                                    12833 Church Rd
+                                    Henrico, VA 23233
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    Tashkent Office (Uzbekistan)
+                                </h5>
+                                <p class="mt-3">
+                                    35, Beruniy Str., Shaykhantahur,
+                                    Tashkent, Uzbekistan
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row footer-phone pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    +1 (804) 492 00 27, <br>
+                                    +1 (475) 473 50 50
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    +998 (93) 541 48 23
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row footer-mail pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    info@royalc.us
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

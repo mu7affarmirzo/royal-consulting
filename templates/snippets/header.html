@@ -1,84 +1,108 @@
 {% load static %}
 {% load i18n %}
-<nav class="navbar navbar-expand-lg px-100">
-        <!-- Brand -->
-    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo-white.png' %}" alt=""></a>
 
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <img src="{% static 'images/menu-icon.svg' %}" alt="">
-    </button>
 
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'infopages:about' %}">{% trans 'About us' %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'investors:investor-index' %}">{% trans 'Investor' %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'entrepreneurs:entrepreneur-index' %}">{% trans 'Entrepreneur' %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'infopages:news-list' %}">{% trans 'News' %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'staticpages:faq' %}">{% trans 'FAQ' %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'staticpages:contacts' %}">{% trans 'Contacts' %}</a>
-            </li>
-            <li class="nav-item">
-                <button class="search-icon"><img src="{% static 'images/search-icon.svg' %}" alt=""></button>
-            </li>
-{#            <li class="nav-item">#}
-{#                <div class="dropdown">#}
-{#                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">#}
-{#                        ENG#}
-{#                    </button>#}
-{#                    <div class="dropdown-menu">#}
-{#                        <a class="dropdown-item" href="#">ENG</a>#}
-{#                        <a class="dropdown-item" href="#">中國人</a>#}
-{#                        <a class="dropdown-item" href="#">한국어</a>#}
-{#                        <a class="dropdown-item" href="#">日本語</a>#}
-{#                        <a class="dropdown-item" href="#">Deutsche</a>#}
-{#                        <a class="dropdown-item" href="#">عربي</a>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </li>#}
-            <li class="nav-item">
-            <form  class="dropdown" id="languageForm" action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ redirect_to }}">
-                <select id="languageSelect" name="language" class="form-select" aria-label="Language select">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                    <option class="dropdown-item" value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}
-                            selected{% endif %}>
-                        {{ language.name_local }}
-                    </option>
-                    {% endfor %}
-                </select>
-            </form>
-            </li>
-            <li class="nav-item">
-                <a class="login-btn active-btn" href="login.html">{% trans 'Login' %}</a>
-            </li>
-        </ul>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg w-100">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}" alt="logo"></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.59888 14.2008H23.5989M5.59888 8.20081H23.5989M5.59888 20.2008H23.5989"
+                        stroke="#1D3B70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a type="button" class="nav-link" data-toggle="dropdown">
+                                Central Asia
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'asia:central-asia-detail' '1478-6270' %}">Geography</a>
+                                <a class="dropdown-item" href="{% url 'asia:central-asia-detail' '6986-5741' %}">Economics</a>
+                                <a class="dropdown-item" href="{% url 'asia:central-asia-detail' '5951-7651' %}">Central Asian Republics </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a type="button" class="nav-link" data-toggle="dropdown">
+                                Competence
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'competence:about' %}">About</a>
+                                <a class="dropdown-item" href="{% url 'competence:about' %}">Our mission</a>
+                                <a class="dropdown-item" href="{% url 'competence:about' %}">Our team</a>
+                                <a class="dropdown-item" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
+                                <a class="dropdown-item" href="{% url 'competence:contact' %}">Contacts </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a type="button" class="nav-link" data-toggle="dropdown">
+                                What are we doing?
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'wedo:wedo-detail' '4225-1191' %}">Partnership cooperation</a>
+                                <a class="dropdown-item" href="{% url 'wedo:wedo-detail' '113-9541' %}">Investor expectations</a>
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a type="button" class="nav-link" data-toggle="dropdown">
+                                Business Opportunities
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'wedo:opportunities-detail' '2491-8824' %}">Discover Industries</a>
+                                <a class="dropdown-item" href="{% url 'wedo:opportunities-detail' '4746-2778' %}">Market Analysis</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a type="button" class="nav-link" data-toggle="dropdown">
+                                Research and Analytics
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">News and analytics </a>
+                                <a class="dropdown-item" href="#">Interesting Facts </a>
+                                <a class="dropdown-item" href="#">Data and statistics </a>
+                                <a class="dropdown-item" href="#">Recent Publications </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item d-flex">
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select name="language" onchange="this.form.submit()" class="lang-select">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+
+                            </select>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-</nav>
-
-<!-- search bar -->
-<form action="" class="search-bar">
-    <div class="overlay"></div>
-    <div class="bar">
-        <span></span>
-        <input type="text" placeholder="Search from site ...">
-        <button type="submit">{% trans 'Search' %}</button>
-        <button type="button" class="close-btn">&times;</button>
-    </div>
-</form>
+</div>
+<!-- subnavbar -->

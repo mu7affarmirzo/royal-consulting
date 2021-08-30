@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row submenu">
+            <div class="container">
+                <div class="row">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Our Mission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Our Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'competence:about' %}">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <h5 class="page-title">About us</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="container about">
+        <div class="row no-gutters mt-4">
+            <p class="mt-4 main-text">
+                Royal Consulting, Inc. was founded under the laws of Virginia in the United States of America in November 2020. Royal Consulting,
+                Inc. is an agent between leading industries and manufacturers worldwide, including the United States and emerging markets in the Central Asia region,
+                to build a strong network of partnerships, attract new business initiatives and collaborate based on mutual trust.
+            </p>
+            <div class="img my-4">
+                <img src="{% static 'images/about.png' %}" alt="">
+
+            </div>
+            <p>
+                The key to the company’s competence is attracting foreign investments and continuously offering business-oriented professional consulting services.
+                The company focuses on providing audit and assurance services, commercial transactions and corporate restructuring,
+                a range of legal and regulatory supports for the key businesses, and investment decisions for the following areas of business:
+            </p>
+            <p>
+                Являясь всего лишь частью общей картины, стремящиеся вытеснить традиционное производство,
+                нанотехнологии освещают чрезвычайно интересные особенности картины в целом, однако конкретные
+                выводы, разумеется, обнародованы. Есть над чем задуматься: независимые государства, которые
+                представляют собой яркий пример континентально-европейского типа политической культуры, будут
+                функционально разнесены на независимые элементы. Господа, глубокий уровень погружения создаёт
+                предпосылки для дальнейших направлений развития. Господа, разбавленное изрядной долей эмпатии,
+                рациональное мышление требует от нас анализа экспериментов, поражающих по своей масштабности и
+                грандиозности.
+            </p>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-lg-3 col-md-4 order-md-1 order-2 my-md-0 my-2">
+                <img src="{% static 'images/mission1.png' %}" class="w-100 h-100" alt="">
+            </div>
+            <div class="col-lg-9 col-md-8 order-md-2 order-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="big-title mt-4 mt-lg-1">Our mission</h2>
+                        <p>
+                            Taking into account the success rates, constant quantitative growth and the scope of our
+                            activity is perfect for the implementation of innovative methods of process management. It's
+                            nice, citizens, to see how the actions of the opposition representatives, overcoming the
+                            current difficult economic situation, are associatively distributed among the sectors! There
+                            is something to think about: conclusions drawn on the basis of Internet analytics are
+                            gaining popularity among certain segments of the population, which means they must be
+                            verified in a timely manner. Banal but irrefutable conclusions.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 my-md-0 my-2"><img src="{% static 'images/mission2.png' %}" class="w-100 h-100" alt="">
+                    </div>
+                    <div class="col-md-6 my-md-0 my-2"><img src="{% static 'images/mission3.png' %}" class="w-100 h-100" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-lg-12">
+                <h2 class="big-title">
+                    Our team
+                </h2>
+                <div class="row mt-5">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <h2>Gafur Gafurov </h2>
+                            <p>Founder, President</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <h2>Elliot Smith </h2>
+                            <p>Executive Director</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <h2>Sofia Johnson </h2>
+                            <p>Legal and Business Affairs Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <h2>Sabrina Brown </h2>
+                            <p>Strategy and Finance Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock content %}

@@ -1,67 +1,175 @@
 {% load static %}
-<div class="footer px-100 mt-100">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3">
-                <img src="{% static 'images/logo-white.png' %}" class="logo" alt="">
-                <ul class="nav mt-4">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{% static 'images/instagram.png' %}" alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{% static 'images/twitter.png' %}" alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="{% static 'images/telegram.png' %}" alt=""></a>
-                    </li>
-                </ul>
+{% load i18n %}
+{#<div class="footer px-100 mt-100">#}
+{#    <div class="container-fluid">#}
+{#        <div class="row">#}
+{#            <div class="col-lg-3">#}
+{#                <img src="{% static 'images/logo-white.png' %}" class="logo" alt="">#}
+{#                <ul class="nav mt-4">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#"><img src="{% static 'images/instagram.png' %}" alt=""></a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#"><img src="{% static 'images/twitter.png' %}" alt=""></a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="#"><img src="{% static 'images/telegram.png' %}" alt=""></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#            <div class="col-lg-2">#}
+{#                <h6>Useful links</h6>#}
+{#                <ul class="nav flex-column">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'investors:investor-index' %}">Investor</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'entrepreneurs:entrepreneur-index' %}">Entrepreneur</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'staticpages:about' %}">About us</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'staticpages:news-list' %}">News</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'staticpages:faq' %}">FAQ</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'staticpages:contacts' %}">Contacts</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#            <div class="col-lg-3">#}
+{#                <h6>Contacts</h6>#}
+{#                <p class="mb-1">Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002</p>#}
+{#                <p><a href="" class="nav-link">E-mail: info@royalco.com</a></p>#}
+{#                <p><a href="" class="nav-link">Phone: +99 899 999-99-99</a></p>#}
+{#                <p><a href="" class="nav-link">Working days: Mon. - Sat: 9:00 to 18:00</a></p>#}
+{#            </div>#}
+{#            <div class="col-lg-4">#}
+{#                <h6>Get in touch</h6>#}
+{#                <form action="">#}
+{#                    <div class="row">#}
+{#                        <div class="col-lg-12">#}
+{#                            <input type="text" placeholder="Name">#}
+{#                            <input type="text" placeholder="Phone number">#}
+{#                            <input type="text" placeholder="Message">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <button class="active-btn" type="submit">Send</button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+
+
+<hr class="mb-0">
+    <div class="container py-2 social-networks">
+        <div class="row align-items-center">
+            <div class="col-lg-3 text-lg-left text-center">
+                <p class="m-0 bold">We are on social networks </p>
+                <p class="m-0 bold">Follow and subscribe to us:</p>
             </div>
-            <div class="col-lg-2">
-                <h6>Useful links</h6>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'investors:investor-index' %}">Investor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'entrepreneurs:entrepreneur-index' %}">Entrepreneur</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:about' %}">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:news-list' %}">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:faq' %}">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'staticpages:contacts' %}">Contacts</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-3">
-                <h6>Contacts</h6>
-                <p class="mb-1">Address: Uzbekistan, Tashkent, st. Katta-Hirmontepa, 1, 1000002</p>
-                <p><a href="" class="nav-link">E-mail: info@royalco.com</a></p>
-                <p><a href="" class="nav-link">Phone: +99 899 999-99-99</a></p>
-                <p><a href="" class="nav-link">Working days: Mon. - Sat: 9:00 to 18:00</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h6>Get in touch</h6>
-                <form action="">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Phone number">
-                            <input type="text" placeholder="Message">
+            <div class="col-lg-9">
+                <div class="container-fluid p-0">
+                    <div class="row mt-3 mt-lg-0">
+                        <div class="col-md-3">
+                            <a href="https://twitter.com/RoyalConsultin2">
+                                <img src="{% static 'images/twitter.svg'%}" alt="">
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.facebook.com/royalconsultinginc">
+                                <img src="{% static 'images/facebook.svg'%}" alt="">
+                                <span>Facebook</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.linkedin.com/company/77359142/admin/">
+                                <img src="{% static 'images/telegram.svg'%}" alt="">
+                                <span>Telegram</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://www.instagram.com/royalconsultinginc/">
+                                <img src="{% static 'images/instagram.svg'%}" alt="">
+                                <span>Instagram</span>
+                            </a>
                         </div>
                     </div>
-                    <button class="active-btn" type="submit">Send</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{% static 'images/logo.png' %}" class="footer-logo" alt="footer-logo">
+                    <h5 class="bold my-4">Royal Consulting Inc.</h5>
+                    <p class="bold">
+                        © 2021 Official website of Royal Consulting Inc.
+                        All rights reserved.
+                    </p>
+                    <p class="bold">
+                        Note: If you find an error in the text,
+                        select it and press Ctrl + Enter to notify us.
+                    </p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="container-fluid d-flex h-100 justify-content-between flex-column">
+                        <div class="row footer-address pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    Richmond Office (USA)
+                                </h5>
+                                <p class="mt-3">
+                                    12833 Church Rd
+                                    Henrico, VA 23233
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    Tashkent Office (Uzbekistan)
+                                </h5>
+                                <p class="mt-3">
+                                    35, Beruniy Str., Shaykhantahur,
+                                    Tashkent, Uzbekistan
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row footer-phone pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    +1 (804) 492 00 27, <br>
+                                    +1 (475) 473 50 50
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    +998 (93) 541 48 23
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="row footer-mail pl-4">
+                            <div class="col-md-6">
+                                <h5 class="bold">
+                                    info@royalc.us
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
