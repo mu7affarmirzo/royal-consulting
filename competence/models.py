@@ -17,7 +17,7 @@ def upload_location(instance, filename):
 
 class CompetenceModel(models.Model):
     title = models.CharField(max_length=500, null=True, blank=True)
-    body = RichTextField(null=True, blank=True)
+    # body = RichTextField(null=True, blank=True)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True)
     date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
     slug = models.SlugField(blank=True, unique=True)
@@ -26,6 +26,31 @@ class CompetenceModel(models.Model):
         ordering = ['date_published']
         verbose_name = 'Competence'
         verbose_name_plural = 'Competence'
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
+    def __str__(self):
+        return str(self.title)
+
+
+class BlockCompetenceModel(models.Model):
+    block = models.ForeignKey(CompetenceModel, related_name='blocks', on_delete=models.CASCADE, blank=True, null=True)
+    title = models.CharField(max_length=500, null=True, blank=True)
+    body = RichTextField(null=True, blank=True)
+    image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
+    slug = models.SlugField(blank=True, unique=True)
+
+    class Meta:
+        ordering = ['date_published']
+        verbose_name = 'Competence blocks'
+        verbose_name_plural = 'Competence blocks'
 
     @property
     def imageURL(self):
@@ -50,6 +75,7 @@ class ContactUsModel(models.Model):
 
 
 @receiver(post_delete, sender=CompetenceModel)
+@receiver(post_delete, sender=BlockCompetenceModel)
 def submission_delete(sender, instance, **kwargs):
     instance.image.delete(False)
 
@@ -57,3 +83,9 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = slugify(str(r.randint(1,10000)) + "-" + str(r.randint(1,10000)))
 pre_save.connect(pre_save_post_receiver, sender=CompetenceModel)
+def pre_save_block_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(str(r.randint(1,10000)) + "-" + str(r.randint(1,10000)))
+pre_save.connect(pre_save_block_receiver, sender=BlockCompetenceModel)
+
+

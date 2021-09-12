@@ -12,15 +12,6 @@
                                 <a class="nav-link" href="{% url 'wedo:wedo-detail' page.slug %}">{{ page.title }}</a>
                             </li>
                         {% endfor %}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">Geography</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">Economics</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">Central Asian Republics</a>#}
-{#                        </li>#}
                     </ul>
                 </div>
             </div>
@@ -37,8 +28,7 @@
 
     <div class="container">
         <div class="row no-gutters mt-4">
-            <div class="img">
-{#                <p class="bold">Figure. Central Asia overview</p>#}
+            <div class="img w-100">
                 <img src="{{posts.imageURL}}" alt="">
                 <span>{{ posts.imageSource }}</span>
             </div>

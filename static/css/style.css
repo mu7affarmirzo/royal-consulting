@@ -485,6 +485,19 @@ textarea {
   top: -5px;
 }
 
+wrapper p {
+    width: 100%
+}
+p{
+    width:100%!important
+}
+
+.news img{
+    height: 220px;
+    object-fit: cover;
+}
+
+
 .footer-address {
   position: relative;
 }

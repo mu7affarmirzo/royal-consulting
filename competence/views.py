@@ -10,10 +10,13 @@ def details_page_view(request, slug):
     context = {}
     pages = CompetenceModel.objects.all()
 
+
     posts = get_object_or_404(CompetenceModel, slug=slug)
+    blocks = posts.blocks.all()
     # context['posts','pages'] = posts, pages
     context['posts'] = posts
     context['pages'] = pages
+    context['blocks'] = blocks
 
     return render(request, 'competence.html', context)
 

@@ -35,6 +35,15 @@
 {#    <script src="{% static 'js/owl.carousel.min.js' %}"></script>#}
 {#    <script src="{% static 'js/isInViewport.min.js' %}"></script>#}
     <script src="{% static 'js/index.js' %}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F67CDSCQEP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-F67CDSCQEP');
+    </script>
     
 
 </head>
@@ -90,7 +99,7 @@
                                     <a class="dropdown-item" href="{% url 'competence:about' %}">Our mission</a>
                                     <a class="dropdown-item" href="{% url 'competence:about' %}">Our team</a>
                                     <a class="dropdown-item" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
-                                    <a class="dropdown-item" href="{% url 'competence:contact' %}">Contacts </a>
+                                    <a class="dropdown-item" href="{% url 'competence:contact-us' %}">Contacts </a>
                                 </div>
 
                             </div>
@@ -429,8 +438,8 @@
                         </div>
                         <div class="col-md-3">
                             <a href="https://www.linkedin.com/company/77359142/admin/">
-                                <img src="{% static 'images/telegram.svg'%}" alt="">
-                                <span>Telegram</span>
+                                <img src="{% static 'images/linkedin.svg'%}" alt="">
+                                <span>LinkedIn</span>
                             </a>
                         </div>
                         <div class="col-md-3">
