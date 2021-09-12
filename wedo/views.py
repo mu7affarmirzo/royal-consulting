@@ -58,6 +58,41 @@ def details_wedo_page_view(request, slug):
 
     return render(request, 'opp_details_page.html', context)
 
+
+def interesting_facts_page_view(request):
+
+    context = {}
+    facts = NewsModel.objects.filter(category='Interesting facts')
+    context = {
+        'facts': facts,
+    }
+
+    return render(request, 'template_page.html', context)
+
+
+def statistics_page_view(request):
+
+    context = {}
+    facts = NewsModel.objects.filter(category='Data and Statistics')
+    context = {
+        'facts': facts,
+    }
+
+    return render(request, 'statistics_page.html', context)
+
+
+def publications_page_view(request):
+
+    context = {}
+    facts = NewsModel.objects.filter(category='Publications')
+    context = {
+        'facts': facts,
+    }
+
+    return render(request, 'publications.html', context)
+
+
+
 def news_page_view(request, slug):
 
     context = {}

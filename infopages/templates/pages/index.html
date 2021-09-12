@@ -95,9 +95,9 @@
                                     Competence
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{% url 'competence:about' %}">About</a>
-                                    <a class="dropdown-item" href="{% url 'competence:about' %}">Our mission</a>
-                                    <a class="dropdown-item" href="{% url 'competence:about' %}">Our team</a>
+                                    <a class="dropdown-item" href="{% url 'competence:competence-detail' '4811-1353' %}">About Us</a>
+                                    <a class="dropdown-item" href="{% url 'competence:competence-detail' '4811-1353' %}">Our mission</a>
+                                    <a class="dropdown-item" href="{% url 'competence:competence-detail' '4811-1353' %}">Our team</a>
                                     <a class="dropdown-item" href="{% url 'competence:competence-detail' '4290-1299' %}">Capabilities</a>
                                     <a class="dropdown-item" href="{% url 'competence:contact-us' %}">Contacts </a>
                                 </div>
@@ -140,10 +140,10 @@
                                     Research and Analytics
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">News and analytics </a>
-                                    <a class="dropdown-item" href="#">Interesting Facts </a>
-                                    <a class="dropdown-item" href="#">Data and statistics </a>
-                                    <a class="dropdown-item" href="#">Recent Publications </a>
+                                    <a class="dropdown-item" href="{% url 'wedo:news-list' %}">News and analytics </a>
+                                    <a class="dropdown-item" href="{% url 'wedo:facts' %}">Interesting Facts </a>
+                                    <a class="dropdown-item" href="{% url 'wedo:statistics' %}">Data and statistics </a>
+                                    <a class="dropdown-item" href="{% url 'wedo:publications' %}">Recent Publications </a>
                                 </div>
                             </div>
                         </li>

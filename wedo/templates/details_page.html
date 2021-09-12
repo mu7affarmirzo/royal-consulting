@@ -7,11 +7,18 @@
             <div class="container">
                 <div class="row">
                     <ul class="nav">
-                        {% for page in pages %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'wedo:wedo-detail' page.slug %}">{{ page.title }}</a>
-                            </li>
-                        {% endfor %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'wedo:news-list' %}">News and Analytics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Interesting facts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Data and statistics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Recent Publications</a>
+                        </li>
                     </ul>
                 </div>
             </div>
